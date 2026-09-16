@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>وسائل الدفع - صيدلية د/ دعاء أحمد كمال</title>
+  <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لصيدلية د/ دعاء أحمد كمال - InstaPay ومحافظ الكاش.">
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <!-- بطاقة الشعار والبيانات الرئيسية -->
+  <section class="hero">
+    <div class="logo-wrap">
+      <img src="logo.jpg" alt="شعار صيدلية د/ دعاء أحمد كمال" class="logo-img">
+    </div>
+    <h1 id="pharmacyName">صيدلية د/ دعاء أحمد كمال</h1>
+    <p class="subtitle">الدفع والتحويل الإلكتروني السريع</p>
+    <div class="badge-status">
+      <span class="pulse-dot"></span>
+      <span>معاملات آمنة وفورية</span>
+    </div>
+  </section>
+
+  <!-- عنوان القسم -->
+  <div class="section-header">
+    <h2 class="section-title">اختر وسيلة الدفع المناسبة</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- حاوية بطاقات الدفع -->
+  <div id="paymentCardsList"></div>
+
+  <!-- صندوق الإرشادات والتنبيه -->
+  <div class="notice-box">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="12" y1="8" x2="12" y2="12"></line>
+      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+    </svg>
+    <div>
+      <p><strong>تنبيه هام:</strong> يرجى التأكد من اسم المستلم والمبلغ قبل تأكيد التحويل، والاحتفاظ بلقطة شاشة (إيصال التحويل) لإرسالها عبر واتساب لتجهيز طلبك فوراً.</p>
+    </div>
+  </div>
+
+  <!-- زر العودة للتواصل -->
+  <a href="contact.html" class="portal-card" style="margin-top: 18px;">
+    <div class="portal-icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </div>
+    <div class="portal-text">
+      <h2>الرجوع لقنوات التواصل</h2>
+      <p>واتساب • مكالمات • لوكيشن الصيدلية</p>
+    </div>
+    <div class="portal-arrow">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </div>
+  </a>
+
+  <div class="footer">
+    <span>شكراً لثقتكم بنا دائمًا ❤️</span>
+  </div>
+</div>
+
+<!-- إشعار النسخ المنبثق -->
+<div class="toast" id="toast">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"></polyline>
+  </svg>
+  <span id="toastText">تم نسخ الرقم بنجاح</span>
+</div>
+
+<script src="settings.js"></script>
+<script>
+  document.getElementById("pharmacyName").textContent = PHARMACY.name;
+
+  // تعريف بيانات الأيقونات والوسائل
+  const paymentMethods = [
+    {
+      data: PHARMACY.payments.instapay,
+      className: "logo-instapay",
+      svgIcon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`
+    },
+    {
+      data: PHARMACY.payments.vodafoneCash,
+      className: "logo-vodafone",
+      svgIcon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 17.5c-4.14 0-7.5-3.36-7.5-7.5 0-2.31 1.05-4.38 2.7-5.75l1.6 2.05C8.04 9.17 7.5 10.52 7.5 12c0 2.48 2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5c0-1.48-.54-2.83-1.3-3.7l1.6-2.05c1.65 1.37 2.7 3.44 2.7 5.75 0 4.14-3.36 7.5-7.5 7.5z"/></svg>`
+    },
+    {
+      data: PHARMACY.payments.etisalatCash,
+      className: "logo-etisalat",
+      svgIcon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>`
+    }
+  ];
+
+  // دالة نسخ الرقم مع التفاعل البصري
+  function copyText(text, btnElement) {
+    if (!text || text.includes("اكتب")) {
+      showToast("عذراً، لم يتم تحديد الرقم بعد");
+      return;
+    }
+
+    navigator.clipboard.writeText(text).then(() => {
+      // تحديث حالة الزر نفسه
+      const originalHtml = btnElement.innerHTML;
+      btnElement.classList.add("copied");
+      btnElement.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        تم النسخ
+      `;
+
+      showToast("تم نسخ البيانات إلى الحافظة ✓");
+
+      setTimeout(() => {
+        btnElement.classList.remove("copied");
+        btnElement.innerHTML = originalHtml;
+      }, 2000);
+    }).catch(() => {
+      showToast("حدث خطأ أثناء النسخ");
+    });
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById("toast");
+    const toastText = document.getElementById("toastText");
+    toastText.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2200);
+  }
+
+  // بناء كروت الدفع ديناميكياً
+  const container = document.getElementById("paymentCardsList");
+
+  paymentMethods.forEach(method => {
+    const p = method.data;
+    if (!p) return;
+
+    const card = document.createElement("div");
+    card.className = "payment-card";
+
+    const hasAppUrl = Boolean(p.appUrl);
+
+    card.innerHTML = `
+      <div class="payment-header">
+        <div class="payment-logo ${method.className}">
+          ${method.svgIcon}
+        </div>
+        <div class="payment-details">
+          <div class="payment-name">${p.label}</div>
+          <div class="payment-note">${p.note || "تحويل إلكتروني"}</div>
+        </div>
+      </div>
+
+      <div class="account-box">
+        <div>
+          <div class="account-holder">${p.nameHolder || "الحساب الرسمي"}</div>
+          <div class="account-number">${p.account}</div>
+        </div>
+      </div>
+
+      <div class="payment-actions ${hasAppUrl ? '' : 'single'}">
+        <button type="button" class="btn btn-copy" id="btn-copy-${p.id}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          نسخ الرقم
+        </button>
+        ${hasAppUrl ? `
+          <a class="btn btn-app" href="${p.appUrl}" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            فتح التطبيق
+          </a>
+        ` : ''}
+      </div>
+    `;
+
+    const copyBtn = card.querySelector(`#btn-copy-${p.id}`);
+    copyBtn.onclick = () => copyText(p.account, copyBtn);
+
+    container.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
