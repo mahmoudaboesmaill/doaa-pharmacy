@@ -425,33 +425,40 @@ h1 {
 }
 
 .payment-logo {
-  width: 58px;
-  height: 58px;
-  border-radius: 16px;
+  width: 54px !important;
+  height: 54px !important;
+  min-width: 54px !important;
+  max-width: 54px !important;
+  min-height: 54px !important;
+  max-height: 54px !important;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden !important;
   border: 1px solid var(--border-color);
-  background: #ffffff;
+  background: #ffffff !important;
+  padding: 4px;
 }
 
 .payment-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
 }
 
 .payment-logo.logo-instapay {
-  background: #ffffff;
+  background: #ffffff !important;
   padding: 4px;
 }
 
 .payment-logo.logo-etisalat {
-  background: #ffffff;
+  background: #ffffff !important;
   padding: 4px;
 }
 
