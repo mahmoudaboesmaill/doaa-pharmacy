@@ -23,8 +23,7 @@
 - facebookUrl: رابط صفحة الفيسبوك
 - instagramUrl: رابط حساب الإنستجرام
 - payments.instapay: حساب ورابط إنستاباي
-- payments.vodafoneCash: رقم محفظة فودافون كاش
-- payments.etisalatCash: رقم ورابط محفظة اتصالات كاش
+- payments.etisalatCash: رقم ورابط محفظة اتصالات كاش (e& money)
 
 استخدام الصفحات مع كروت NFC واستضافة GitHub Pages:
 ------------------------------------------------

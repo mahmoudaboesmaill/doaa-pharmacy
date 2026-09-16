@@ -425,19 +425,35 @@ h1 {
 }
 
 .payment-logo {
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
 }
 
-.logo-instapay { background: linear-gradient(135deg, #441867, #6a1b9a); color: #fff; }
-.logo-vodafone { background: linear-gradient(135deg, #e60000, #b30000); color: #fff; }
-.logo-etisalat { background: linear-gradient(135deg, #009900, #006600); color: #fff; }
+.payment-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.payment-logo.logo-instapay {
+  background: #000000;
+  padding: 4px;
+}
+
+.payment-logo.logo-etisalat {
+  background: #ffffff;
+  padding: 4px;
+}
 
 .payment-details {
   flex: 1;

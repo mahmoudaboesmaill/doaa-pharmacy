@@ -23,7 +23,7 @@ const PHARMACY = {
   facebookUrl: "https://www.facebook.com/share/1B67WUr2Kw/",
   instagramUrl: "https://www.instagram.com/doctordoaa.pharmacy/",
 
-  // وسائل الدفع والتحويل الإلكتروني
+  // وسائل الدفع والتحويل الإلكتروني (InstaPay & e& money)
   payments: {
     instapay: {
       id: "instapay",
@@ -31,22 +31,16 @@ const PHARMACY = {
       account: "01113540136",
       nameHolder: "د/ دعاء أحمد كمال",
       note: "تحويل فوري عبر شبكة المدفوعات اللحظية",
+      logo: "instapay_logo.png",
       appUrl: "https://ipn.eg/S/mahmoudaboesmaill/instapay/10oB5g"
-    },
-    vodafoneCash: {
-      id: "vodafoneCash",
-      label: "Vodafone Cash",
-      account: "01090187051",
-      nameHolder: "محفظة فودافون كاش",
-      note: "تحويل لمحفظة فودافون كاش",
-      appUrl: ""
     },
     etisalatCash: {
       id: "etisalatCash",
-      label: "e& Cash",
+      label: "e& money (اتصالات كاش)",
       account: "01113540136",
       nameHolder: "محفظة إي آند كاش",
       note: "تحويل لمحفظة اتصالات كاش",
+      logo: "etisalat_logo.png",
       appUrl: "https://app.etisalat.eg/my-etisalat/index.html?appScreens=cash&appScreen=cash&extra=screenId%3Asend_money%3Bdial%3A01113540136"
     }
   }

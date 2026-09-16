@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>وسائل الدفع - صيدلية د/ دعاء أحمد كمال</title>
-  <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لصيدلية د/ دعاء أحمد كمال - InstaPay ومحافظ الكاش.">
+  <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لصيدلية د/ دعاء أحمد كمال - InstaPay و e& money (اتصالات كاش).">
   <link rel="icon" type="image/jpeg" href="logo.jpg">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -80,22 +80,17 @@
 <script>
   document.getElementById("pharmacyName").textContent = PHARMACY.name;
 
-  // تعريف بيانات الأيقونات والوسائل
+  // تعريف وسائل الدفع مع الشعارات الرسمية الجديدة
   const paymentMethods = [
     {
       data: PHARMACY.payments.instapay,
       className: "logo-instapay",
-      svgIcon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`
-    },
-    {
-      data: PHARMACY.payments.vodafoneCash,
-      className: "logo-vodafone",
-      svgIcon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 17.5c-4.14 0-7.5-3.36-7.5-7.5 0-2.31 1.05-4.38 2.7-5.75l1.6 2.05C8.04 9.17 7.5 10.52 7.5 12c0 2.48 2.02 4.5 4.5 4.5s4.5-2.02 4.5-4.5c0-1.48-.54-2.83-1.3-3.7l1.6-2.05c1.65 1.37 2.7 3.44 2.7 5.75 0 4.14-3.36 7.5-7.5 7.5z"/></svg>`
+      logoImg: "instapay_logo.png"
     },
     {
       data: PHARMACY.payments.etisalatCash,
       className: "logo-etisalat",
-      svgIcon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>`
+      logoImg: "etisalat_logo.png"
     }
   ];
 
@@ -107,7 +102,6 @@
     }
 
     navigator.clipboard.writeText(text).then(() => {
-      // تحديث حالة الزر نفسه
       const originalHtml = btnElement.innerHTML;
       btnElement.classList.add("copied");
       btnElement.innerHTML = `
@@ -153,7 +147,7 @@
     card.innerHTML = `
       <div class="payment-header">
         <div class="payment-logo ${method.className}">
-          ${method.svgIcon}
+          <img src="${method.logoImg}" alt="${p.label}">
         </div>
         <div class="payment-details">
           <div class="payment-name">${p.label}</div>
