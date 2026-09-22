@@ -28,7 +28,7 @@ const PHARMACY = {
     instapay: {
       id: "instapay",
       label: "InstaPay",
-      account: "01113540136",
+      account: "01109275859",
       nameHolder: "د/ دعاء أحمد كمال",
       note: "تحويل فوري عبر شبكة المدفوعات اللحظية",
       logo: "instapay_logo.png",
@@ -37,7 +37,7 @@ const PHARMACY = {
     etisalatCash: {
       id: "etisalatCash",
       label: "e& money (اتصالات كاش)",
-      account: "01113540136",
+      account: "01109275859",
       nameHolder: "محفظة إي آند كاش",
       note: "تحويل لمحفظة اتصالات كاش",
       logo: "etisalat_logo.png",
