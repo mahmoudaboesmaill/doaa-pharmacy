@@ -758,8 +758,198 @@ h1 {
   transform: translateX(-50%) translateY(0);
 }
 
-@media (max-width: 380px) {
-  h1 { font-size: 20px; }
-  .grid { gap: 8px; }
-  .tile { padding: 14px 8px; }
+/* =========================================
+   Responsive – كل أحجام الشاشات
+   ========================================= */
+
+/* شاشات صغيرة جداً (أقل من 360px) */
+@media (max-width: 359px) {
+  .wrap {
+    padding: 12px 10px 32px;
+  }
+  h1 {
+    font-size: 18px;
+  }
+  .subtitle {
+    font-size: 13px;
+  }
+  .badge-status {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  .hero {
+    padding: 18px 14px 16px;
+    border-radius: 20px;
+  }
+  .logo-wrap {
+    width: 88px;
+    height: 88px;
+  }
+  .grid {
+    gap: 8px;
+  }
+  .tile {
+    padding: 12px 6px;
+  }
+  .tile b {
+    font-size: 13px;
+  }
+  .tile span {
+    font-size: 11px;
+  }
+  .tile-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 15px;
+  }
+  .rx-banner {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+  .rx-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+  }
+  .rx-text h3 {
+    font-size: 14px;
+  }
+  .rx-text p {
+    font-size: 11px;
+  }
+  .portal-card {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+  .portal-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+  .portal-text h2 {
+    font-size: 14.5px;
+  }
+  .portal-text p {
+    font-size: 11.5px;
+  }
+  .quick-bar {
+    gap: 6px;
+  }
+  .quick-btn {
+    padding: 10px 4px;
+    font-size: 11px;
+    gap: 4px;
+  }
+  .quick-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .payment-card {
+    padding: 14px;
+  }
+  .payment-name {
+    font-size: 15px;
+  }
+  .account-number {
+    font-size: 15px;
+  }
+  .btn {
+    padding: 10px 10px;
+    font-size: 13px;
+    gap: 6px;
+  }
+  .notice-box {
+    padding: 12px;
+  }
+  .notice-box p {
+    font-size: 12px;
+  }
+  .card-address {
+    padding: 14px;
+    gap: 10px;
+  }
+  .address-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .address-info .label {
+    font-size: 13.5px;
+  }
+  .address-info .value {
+    font-size: 12.5px;
+  }
+  .btn-directions {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+  .footer {
+    font-size: 12px;
+    margin-top: 20px;
+  }
 }
+
+/* شاشات صغيرة (360px - 400px) */
+@media (min-width: 360px) and (max-width: 400px) {
+  .wrap {
+    padding: 14px 12px 36px;
+  }
+  h1 {
+    font-size: 19px;
+  }
+  .logo-wrap {
+    width: 94px;
+    height: 94px;
+  }
+  .tile {
+    padding: 14px 8px;
+  }
+  .tile b {
+    font-size: 14px;
+  }
+  .portal-text h2 {
+    font-size: 15.5px;
+  }
+  .rx-text h3 {
+    font-size: 15px;
+  }
+}
+
+/* شاشات متوسطة (401px - 480px) */
+@media (min-width: 401px) and (max-width: 480px) {
+  .wrap {
+    padding: 16px 14px 38px;
+  }
+  h1 {
+    font-size: 21px;
+  }
+  .logo-wrap {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* شاشات أكبر من الموبايل (فوق 520px) */
+@media (min-width: 521px) {
+  .wrap {
+    padding: 28px 20px 48px;
+  }
+  .hero {
+    padding: 28px 24px 24px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .logo-wrap {
+    width: 116px;
+    height: 116px;
+  }
+  .portal-card {
+    padding: 24px 22px;
+  }
+}
+
