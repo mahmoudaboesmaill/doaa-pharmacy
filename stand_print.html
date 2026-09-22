@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ستاند صيدلية د/ دعاء أحمد كمال</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================
+           إعداد الصفحة
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+
+            background-color: #e9ecef;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            gap: 40px;
+
+            padding: 50px;
+
+            flex-wrap: wrap;
+
+            margin: 0;
+        }
+
+
+        /* =========================
+           تصميم الستاند
+           الحجم: 14 × 14 سم
+        ========================== */
+
+        .stand {
+
+            width: 14cm;
+            height: 14cm;
+
+            background-color: #ffffff;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding: 22px 28px 42px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           الإطار الخارجي
+           تم تقليل السمك
+        ========================== */
+
+        .stand::before {
+
+            content: '';
+
+            position: absolute;
+
+            inset: 0;
+
+            border-radius: 20px;
+
+            border: 4px solid transparent;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0b2545,
+                    #168aad,
+                    #00a8cc
+                )
+                border-box;
+
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+
+            -webkit-mask-composite: destination-out;
+
+            mask-composite: exclude;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           اللوجو
+        ========================== */
+
+        .logo {
+
+            width: 100px;
+            height: 100px;
+
+            object-fit: contain;
+
+            border-radius: 50%;
+
+            margin-top: 3px;
+            margin-bottom: 6px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 5px 16px rgba(11, 37, 69, 0.08);
+        }
+
+
+        /* =========================
+           اسم الصيدلية
+        ========================== */
+
+        .title {
+
+            color: #0b2545;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            line-height: 1.4;
+
+            margin: 0;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           العنوان الفرعي
+        ========================== */
+
+        .subtitle {
+
+            color: #168aad;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            line-height: 1.7;
+
+            text-align: center;
+
+            margin: 4px 0 0;
+        }
+
+
+        /* =========================
+           بيانات الدفع
+        ========================== */
+        .payment-info {
+	display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 6px;
+          flex-wrap: nowrap;
+          direction: rtl;
+            }
+
+            .payment-label {
+         color: #5c6770;
+         font-size: 14px;
+         font-weight: 700;
+          margin: 0;
+            }
+
+           .payment-number {
+         color: #0b2545;
+         font-size: 15px;
+         font-weight: 900;
+         letter-spacing: 0.4px;
+         direction: ltr;
+           }
+        /* =========================
+           صندوق NFC + QR
+        ========================== */
+
+        .scan-box {
+
+            width: 100%;
+
+            height: 210px;
+
+            margin-top: 18px;
+
+            border: 1.5px solid #dedede;
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-evenly;
+
+            background-color: #fdfdfd;
+
+            padding: 14px 18px;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.025);
+        }
+
+
+        /* =========================
+           كل اختيار
+        ========================== */
+
+        .scan-action {
+
+            width: 145px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+        }
+
+
+        /* =========================
+           QR
+        ========================== */
+
+        .qr-placeholder {
+
+            width: 105px;
+
+            height: 105px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background-color: #ffffff;
+        }
+
+
+        .qr-placeholder img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: contain;
+        }
+
+
+        /* =========================
+           NFC
+        ========================== */
+
+        .icon-wrapper {
+
+            width: 105px;
+
+            height: 105px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .nfc-icon {
+
+            width: 92%;
+
+            height: 92%;
+
+            object-fit: contain;
+
+            /*
+              يحول الأيقونة السوداء إلى لون قريب
+              من كحلي الهوية.
+            */
+
+            filter:
+                brightness(0)
+                saturate(100%)
+                invert(13%)
+                sepia(22%)
+                saturate(2955%)
+                hue-rotate(173deg)
+                brightness(89%)
+                contrast(97%);
+        }
+
+
+        /* =========================
+           النص أسفل QR / NFC
+        ========================== */
+
+        .action-text {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #34495e;
+
+            text-align: center;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           كلمة "أو"
+        ========================== */
+
+        .divider {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 50%;
+
+            background-color: #f1f7f9;
+
+            border: 1px solid #d6e9ef;
+
+            color: #168aad;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =========================
+           الفوتر
+        ========================== */
+
+        .footer {
+
+            position: absolute;
+
+            bottom: 24px;
+
+            color: #0b2545;
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+        /* خط صغير فوق الفوتر */
+
+        .footer::before {
+
+            content: '';
+
+            display: block;
+
+            width: 38px;
+
+            height: 2px;
+
+            border-radius: 10px;
+
+            background-color: #00a8cc;
+
+            margin: 0 auto 6px;
+        }
+
+
+        /* =========================
+           إعدادات الطباعة
+        ========================== */
+
+        @media print {
+
+            @page {
+                margin: 0;
+            }
+
+            body {
+
+                background: white;
+
+                padding: 0;
+
+                display: block;
+            }
+
+
+            .stand {
+
+                margin: 0 auto 30px;
+
+                box-shadow: none;
+
+                page-break-inside: avoid;
+            }
+
+
+            .stand::before {
+
+                border: 3px solid #0b2545;
+
+                background: none;
+
+                -webkit-mask: none;
+
+                mask: none;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ==================================
+         الستاند الأول
+         التواصل
+    =================================== -->
+
+    <div class="stand">
+
+        <img
+            src="logo-removebg-preview.png"
+            alt="صيدلية دعاء أحمد كمال"
+            class="logo"
+        >
+
+
+        <h1 class="title">
+            صيدلية د/ دعاء أحمد كمال
+        </h1>
+
+
+        <div class="subtitle">
+            تواصل معنا بسهولة
+        </div>
+
+
+        <div class="scan-box">
+
+
+            <!-- QR -->
+
+            <div class="scan-action">
+
+                <div class="qr-placeholder">
+
+                    <img
+                        src="qr-code-social.svg"
+                        alt="QR Code للتواصل"
+                    >
+
+                </div>
+
+                <div class="action-text">
+                    امسح كود QR
+                </div>
+
+            </div>
+
+
+
+            <!-- أو -->
+
+            <div class="divider">
+                أو
+            </div>
+
+
+
+            <!-- NFC -->
+
+            <div class="scan-action">
+
+                <div class="icon-wrapper">
+
+                    <img
+                        src="contactless.svg"
+                        alt="NFC"
+                        class="nfc-icon"
+                    >
+
+                </div>
+
+                <div class="action-text">
+                    قرّب هاتفك هنا
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+            صحتك تهمنا
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================
+         الستاند الثاني
+         الدفع الإلكتروني
+    =================================== -->
+
+    <div class="stand">
+
+        <img
+            src="logo-removebg-preview.png"
+            alt="صيدلية دعاء أحمد كمال"
+            class="logo"
+        >
+
+
+        <h1 class="title">
+            صيدلية د/ دعاء أحمد كمال
+        </h1>
+
+
+        <div class="subtitle">
+            اختر طريقة الدفع
+            (إنستا باي - محفظة إلكترونية)
+        </div>
+
+
+        <div class="payment-info">
+
+            <div class="payment-label">
+                رقم الدفع:
+            </div>
+
+            <div class="payment-number">
+                01109275859
+            </div>
+
+        </div>
+
+
+        <div class="scan-box">
+
+
+            <!-- QR -->
+
+            <div class="scan-action">
+
+                <div class="qr-placeholder">
+
+                    <img
+                        src="qr-code-pay.svg"
+                        alt="QR Code للدفع"
+                    >
+
+                </div>
+
+                <div class="action-text">
+                    امسح كود QR
+                </div>
+
+            </div>
+
+
+
+            <!-- أو -->
+
+            <div class="divider">
+                أو
+            </div>
+
+
+
+            <!-- NFC -->
+
+            <div class="scan-action">
+
+                <div class="icon-wrapper">
+
+                    <img
+                        src="contactless.svg"
+                        alt="NFC"
+                        class="nfc-icon"
+                    >
+
+                </div>
+
+                <div class="action-text">
+                    قرّب هاتفك هنا
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer">
+            صحتك تهمنا
+        </div>
+
+    </div>
+
+
+</body>
+</html>
