@@ -32,7 +32,7 @@ const PHARMACY = {
       nameHolder: "د/ دعاء أحمد كمال",
       note: "تحويل فوري عبر شبكة المدفوعات اللحظية",
       logo: "instapay_logo.png",
-      appUrl: "https://ipn.eg/S/mahmoudaboesmaill/instapay/10oB5g"
+      appUrl: "https://ipn.eg/S/dkamalph/instapay/2PXtG4"
     },
     etisalatCash: {
       id: "etisalatCash",
@@ -41,7 +41,7 @@ const PHARMACY = {
       nameHolder: "محفظة إي آند كاش",
       note: "تحويل لمحفظة اتصالات كاش",
       logo: "etisalat_logo.png",
-      appUrl: "https://app.etisalat.eg/my-etisalat/index.html?appScreens=cash&appScreen=cash&extra=screenId%3Asend_money%3Bdial%3A01113540136"
+      appUrl: "https://app.etisalat.eg/?appScreens=cash&appScreen=cash&extra=screenId:send_money;dial:01109275859"
     }
   }
 };
