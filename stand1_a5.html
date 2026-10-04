@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+    <title>ستاند صيدلية د/ دعاء أحمد كمال - التواصل</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Tahoma, Arial, sans-serif; background-color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        
+        /* A5 Print Settings */
+        @media print {
+            @page {
+                size: 148mm 210mm; /* A5 */
+                margin: 0;
+            }
+            body {
+                width: 148mm;
+                height: 210mm;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        .stand { width: 14cm; height: 14cm; background-color: #ffffff; border-radius: 20px; display: flex; flex-direction: column; align-items: center; padding: 22px 28px 22px; position: relative; overflow: hidden; box-shadow: none; }
+        
+        /* The border for print without gradients to ensure best print quality */
+        .stand::before { content: ''; position: absolute; inset: 0; border-radius: 20px; border: 4px solid #0b2545; pointer-events: none; }
+        
+        .logo { width: 100px; height: 100px; object-fit: contain; border-radius: 50%; margin-top: 3px; margin-bottom: 6px; background: #ffffff; }
+        .title { color: #0b2545; font-size: 24px; font-weight: 800; line-height: 1.4; margin: 0; text-align: center; }
+        .subtitle { color: #168aad; font-size: 16px; font-weight: 700; line-height: 1.4; text-align: center; margin: 4px 0 0; }
+        .scan-box { width: 100%; flex: 1; margin-top: 14px; border: 1.5px solid #dedede; border-radius: 16px; display: flex; align-items: center; justify-content: space-evenly; background-color: #fdfdfd; padding: 14px 18px; }
+        .scan-action { width: 145px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; }
+        .qr-placeholder { width: 105px; height: 105px; display: flex; align-items: center; justify-content: center; background-color: #ffffff; }
+        .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+        .icon-wrapper { width: 105px; height: 105px; display: flex; align-items: center; justify-content: center; }
+        
+        /* Ensure SVGs print cleanly */
+        .nfc-icon { width: 92%; height: 92%; object-fit: contain; filter: brightness(0) saturate(100%) invert(13%) sepia(22%) saturate(2955%) hue-rotate(173deg) brightness(89%) contrast(97%); }
+        
+        .action-text { font-size: 14px; font-weight: 700; color: #34495e; text-align: center; line-height: 1.5; }
+        .divider { width: 38px; height: 38px; border-radius: 50%; background-color: #f1f7f9; border: 1px solid #d6e9ef; color: #168aad; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .footer { margin-top: 14px; color: #0b2545; font-size: 17px; font-weight: 800; text-align: center; }
+        .footer::before { content: ''; display: block; width: 38px; height: 2px; border-radius: 10px; background-color: #00a8cc; margin: 0 auto 6px; }
+    </style>
+</head>
+<body>
+    <div class="stand">
+        <img src="logo-removebg-preview.png" alt="صيدلية دعاء أحمد كمال" class="logo">
+        <h1 class="title">صيدلية د/ دعاء أحمد كمال</h1>
+        <div class="subtitle">تواصل معنا بسهولة</div>
+        <div class="scan-box">
+            <div class="scan-action">
+                <div class="qr-placeholder">
+                    <img src="qr-code-social.svg" alt="QR Code للتواصل">
+                </div>
+                <div class="action-text">امسح كود QR</div>
+            </div>
+            <div class="divider">أو</div>
+            <div class="scan-action">
+                <div class="icon-wrapper">
+                    <img src="contactless.svg" alt="NFC" class="nfc-icon">
+                </div>
+                <div class="action-text">قرّب هاتفك هنا</div>
+            </div>
+        </div>
+        <div class="footer">صحتك تهمنا</div>
+    </div>
+</body>
+</html>

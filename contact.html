@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>تواصل معنا - صيدلية د/ دعاء أحمد كمال</title>
   <meta name="description" content="تواصل مع صيدلية د/ دعاء أحمد كمال، احفظ جهة الاتصال واطلب علاجك مباشرة عبر واتساب.">
   <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="stylesheet" href="style.css?v=3.0">
+  <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
@@ -47,7 +48,7 @@
       <span>إضافة لجهات الاتصال</span>
     </button>
     <!-- محادثة واتساب -->
-    <a class="tile" id="waTile" href="#" target="_blank">
+    <a class="tile" id="waTile" href="#" target="_blank" rel="noopener noreferrer">
       <div class="tile-icon-wrap bg-wa">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12.031 2C6.516 2 2.016 6.5 2.016 12.016c0 1.953.563 3.828 1.625 5.438L2.016 22l4.672-1.578c1.547.969 3.328 1.5 5.344 1.5 5.516 0 10.016-4.5 10.016-10.016C22.047 6.5 17.547 2 12.031 2zm0 18.297c-1.734 0-3.359-.5-4.75-1.422l-.344-.219-2.781.938.953-2.688-.234-.375c-1.047-1.469-1.609-3.219-1.609-5.016 0-4.828 3.938-8.766 8.766-8.766 4.828 0 8.766 3.938 8.766 8.766s-3.938 8.781-8.766 8.781zm4.813-6.578c-.266-.141-1.578-.781-1.828-.875-.25-.094-.438-.141-.625.141-.188.281-.719.875-.875 1.063-.156.188-.328.203-.594.063-.266-.141-1.125-.422-2.156-1.344-.813-.719-1.359-1.609-1.516-1.891-.156-.266-.016-.422.125-.563.125-.125.266-.328.406-.5.141-.156.188-.266.281-.453.094-.188.047-.359-.031-.5-.078-.141-.625-1.516-.859-2.078-.234-.547-.469-.469-.641-.484l-.547-.016c-.188 0-.5.078-.766.359-.266.281-1.016 1-1.016 2.438s1.047 2.828 1.188 3.016c.156.188 2.063 3.156 5 4.422.703.313 1.25.484 1.688.625.703.219 1.344.188 1.859.109.578-.094 1.578-.656 1.813-1.281.234-.625.234-1.156.156-1.281-.078-.125-.266-.203-.531-.344z"/>
@@ -57,7 +58,7 @@
       <span>محادثة فورية</span>
     </a>
     <!-- فيسبوك -->
-    <a class="tile" id="fbTile" href="#" target="_blank">
+    <a class="tile" id="fbTile" href="#" target="_blank" rel="noopener noreferrer">
       <div class="tile-icon-wrap bg-fb">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -68,7 +69,7 @@
     </a>
 
     <!-- انستجرام -->
-    <a class="tile" id="igTile" href="#" target="_blank">
+    <a class="tile" id="igTile" href="#" target="_blank" rel="noopener noreferrer">
       <div class="tile-icon-wrap bg-ig">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -78,7 +79,7 @@
       <span>شاهد جديدنا</span>
     </a>
 <!-- خرائط جوجل والموقع -->
-    <a class="tile" id="mapsTile" href="#" target="_blank">
+    <a class="tile" id="mapsTile" href="#" target="_blank" rel="noopener noreferrer">
       <div class="tile-icon-wrap bg-maps">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
@@ -104,7 +105,7 @@
 
   </div>
   <!-- زر الانتقال لصفحة الدفع -->
-  <a href="payment.html" class="portal-card payment-portal" style="margin-bottom: 0;">
+  <a href="payment.html" class="portal-card payment-portal portal-card-flush">
     <div class="portal-icon">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
@@ -122,7 +123,7 @@
     </div>
   </a>
 <!-- زر طلب دواء أو إرسال روشتة البارز -->
-  <a id="rxBtn" class="rx-banner" href="#" target="_blank">
+  <a id="rxBtn" class="rx-banner" href="#" target="_blank" rel="noopener noreferrer">
     <div class="rx-icon">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -154,7 +155,7 @@
     <div class="address-info">
       <div class="label">عنوان الصيدلية</div>
       <div class="value" id="addressText"></div>
-      <a class="btn-directions" id="directionsBtn" href="#" target="_blank">
+      <a class="btn-directions" id="directionsBtn" href="#" target="_blank" rel="noopener noreferrer">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
         </svg>
@@ -168,65 +169,9 @@
   </div>
 </div>
 
-<script src="settings.js"></script>
-<script>
-  // تحديث النصوص من settings.js
-  document.getElementById("pharmacyName").textContent = PHARMACY.name;
-  document.getElementById("pharmacyTagline").textContent = PHARMACY.tagline;
-  if(PHARMACY.status) {
-    document.getElementById("pharmacyStatus").textContent = PHARMACY.status;
-  }
-  document.getElementById("addressText").textContent = PHARMACY.address;
-  document.getElementById("phoneLabel").textContent = PHARMACY.phone;
-  document.getElementById("phoneTile").href = `tel:${PHARMACY.phone}`;
-  document.getElementById("mapsTile").href = PHARMACY.mapsUrl;
-  document.getElementById("directionsBtn").href = PHARMACY.mapsUrl;
-
-  // رابط واتساب لطلب الروشتة المباشر
-  const encodedMsg = encodeURIComponent(PHARMACY.prescriptionMsg || "السلام عليكم، أود طلب علاج أو إرسال روشتة.");
-  const waUrl = `https://wa.me/${PHARMACY.whatsapp}?text=${encodedMsg}`;
-  document.getElementById("rxBtn").href = waUrl;
-  document.getElementById("waTile").href = `https://wa.me/${PHARMACY.whatsapp}`;
-
-  // السوشيال ميديا
-  if(PHARMACY.facebookUrl) {
-    document.getElementById("fbTile").href = PHARMACY.facebookUrl;
-  } else {
-    document.getElementById("fbTile").style.display = "none";
-  }
-
-  if(PHARMACY.instagramUrl) {
-    document.getElementById("igTile").href = PHARMACY.instagramUrl;
-  } else {
-    document.getElementById("igTile").style.display = "none";
-  }
-
-  // تحميل وحفظ جهة الاتصال vCard
-  function saveContact() {
-    const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:${PHARMACY.name}
-ORG:${PHARMACY.name}
-TITLE:صيدلية
-TEL;TYPE=WORK,VOICE:${PHARMACY.phone}
-TEL;TYPE=CELL,VOICE,MSG:${PHARMACY.whatsapp}
-ADR;TYPE=WORK:;;${PHARMACY.address};;;;
-NOTE:صحتك تهمنا دائمًا
-END:VCARD`;
-
-    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "صيدلية د. دعاء كمال.vcf";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }
-
-  document.getElementById("saveContactBtn").onclick = saveContact;
-</script>
+<script src="settings.js?v=4.0"></script>
+<script src="site-common.js?v=4.0"></script>
+<script src="contact.js?v=4.0"></script>
 
 </body>
 </html>

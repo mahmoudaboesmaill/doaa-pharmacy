@@ -6,7 +6,11 @@ const PHARMACY = {
   // بيانات الصيدلية الأساسية
   name: "صيدلية د/ دعاء أحمد كمال",
   tagline: "صحتك تهمنا دائمًا",
-  status: "مفتوح الآن • في خدمتكم دائمًا",
+  hours: {
+    mode: "always-open",
+    timezone: "Africa/Cairo",
+    openLabel: "مفتوح الآن • في خدمتكم 24 ساعة"
+  },
   
   // أرقام التواصل
   phone: "01126802211",
