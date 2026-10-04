@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>وسائل الدفع - صيدلية د/ دعاء أحمد كمال</title>
   <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لصيدلية د/ دعاء أحمد كمال - InstaPay و e& money (اتصالات كاش).">
   <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="stylesheet" href="style.css?v=3.0">
+  <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
@@ -46,7 +47,7 @@
   </div>
 
   <!-- زر العودة للتواصل -->
-  <a href="contact.html" class="portal-card" style="margin-top: 18px;">
+  <a href="contact.html" class="portal-card portal-card-top">
     <div class="portal-icon">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -69,126 +70,55 @@
 </div>
 
 <!-- إشعار النسخ المنبثق -->
-<div class="toast" id="toast">
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="20 6 9 17 4 12"></polyline>
   </svg>
   <span id="toastText">تم نسخ الرقم بنجاح</span>
 </div>
 
-<script src="settings.js"></script>
-<script>
-  document.getElementById("pharmacyName").textContent = PHARMACY.name;
+<template id="paymentCardTemplate">
+  <div class="payment-card">
+    <div class="payment-header">
+      <div class="payment-logo">
+        <img src="logo.jpg" alt="" width="44" height="44">
+      </div>
+      <div class="payment-details">
+        <div class="payment-name"></div>
+        <div class="payment-note"></div>
+      </div>
+    </div>
 
-  // تعريف وسائل الدفع مع الشعارات الرسمية الجديدة
-  const paymentMethods = [
-    {
-      data: PHARMACY.payments.instapay,
-      className: "logo-instapay",
-      logoImg: "instapay_logo.png"
-    },
-    {
-      data: PHARMACY.payments.etisalatCash,
-      className: "logo-etisalat",
-      logoImg: "etisalat_logo.png"
-    }
-  ];
+    <div class="account-box">
+      <div>
+        <div class="account-holder"></div>
+        <div class="account-number"></div>
+      </div>
+    </div>
 
-  // دالة نسخ الرقم مع التفاعل البصري
-  function copyText(text, btnElement) {
-    if (!text || text.includes("اكتب")) {
-      showToast("عذراً، لم يتم تحديد الرقم بعد");
-      return;
-    }
-
-    navigator.clipboard.writeText(text).then(() => {
-      const originalHtml = btnElement.innerHTML;
-      btnElement.classList.add("copied");
-      btnElement.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"></polyline>
+    <div class="payment-actions">
+      <button type="button" class="btn btn-copy">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
         </svg>
-        تم النسخ
-      `;
+        <span class="btn-label">نسخ الرقم</span>
+      </button>
+      <a class="btn btn-app" href="#" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>فتح التطبيق</span>
+      </a>
+    </div>
+  </div>
+</template>
 
-      showToast("تم نسخ البيانات إلى الحافظة ✓");
-
-      setTimeout(() => {
-        btnElement.classList.remove("copied");
-        btnElement.innerHTML = originalHtml;
-      }, 2000);
-    }).catch(() => {
-      showToast("حدث خطأ أثناء النسخ");
-    });
-  }
-
-  function showToast(msg) {
-    const toast = document.getElementById("toast");
-    const toastText = document.getElementById("toastText");
-    toastText.textContent = msg;
-    toast.classList.add("show");
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2200);
-  }
-
-  // بناء كروت الدفع ديناميكياً
-  const container = document.getElementById("paymentCardsList");
-
-  paymentMethods.forEach(method => {
-    const p = method.data;
-    if (!p) return;
-
-    const card = document.createElement("div");
-    card.className = "payment-card";
-
-    const hasAppUrl = Boolean(p.appUrl);
-
-    card.innerHTML = `
-      <div class="payment-header">
-        <div class="payment-logo ${method.className}" style="width:52px;height:52px;min-width:52px;max-width:52px;min-height:52px;max-height:52px;overflow:hidden;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#ffffff;border:1px solid #dcebee;box-shadow:0 4px 12px rgba(0,0,0,0.06);flex-shrink:0;padding:4px;">
-          <img src="${method.logoImg}" alt="${p.label}" width="44" height="44" style="width:100%;height:100%;max-width:44px;max-height:44px;object-fit:contain;display:block;">
-        </div>
-        <div class="payment-details">
-          <div class="payment-name">${p.label}</div>
-          <div class="payment-note">${p.note || "تحويل إلكتروني"}</div>
-        </div>
-      </div>
-
-      <div class="account-box">
-        <div>
-          <div class="account-holder">${p.nameHolder || "الحساب الرسمي"}</div>
-          <div class="account-number">${p.account}</div>
-        </div>
-      </div>
-
-      <div class="payment-actions ${hasAppUrl ? '' : 'single'}">
-        <button type="button" class="btn btn-copy" id="btn-copy-${p.id}">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-          </svg>
-          نسخ الرقم
-        </button>
-        ${hasAppUrl ? `
-          <a class="btn btn-app" href="${p.appUrl}" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            فتح التطبيق
-          </a>
-        ` : ''}
-      </div>
-    `;
-
-    const copyBtn = card.querySelector(`#btn-copy-${p.id}`);
-    copyBtn.onclick = () => copyText(p.account, copyBtn);
-
-    container.appendChild(card);
-  });
-</script>
+<script src="settings.js?v=4.0"></script>
+<script src="site-common.js?v=4.0"></script>
+<script src="payment.js?v=4.0"></script>
 
 </body>
 </html>

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
-
 :root {
   --brand-navy: #0b2545;
   --brand-navy-dark: #07172b;
@@ -37,7 +35,7 @@
 
 body {
   margin: 0;
-  font-family: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: Tahoma, Arial, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: linear-gradient(180deg, #edf6f9 0%, #f7fbfd 45%, #ffffff 100%);
   color: var(--text-main);
   direction: rtl;
@@ -491,7 +489,7 @@ h1 {
 }
 
 .account-number {
-  font-family: 'Cairo', monospace, sans-serif;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
   font-size: 17px;
   font-weight: 800;
   color: var(--brand-navy);
@@ -756,6 +754,30 @@ h1 {
 .toast.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+.section-header-spaced {
+  margin-top: 24px;
+}
+
+.portal-card-flush {
+  margin-bottom: 0;
+}
+
+.portal-card-top {
+  margin-top: 18px;
+}
+
+.clipboard-helper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* =========================================
