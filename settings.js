@@ -36,7 +36,7 @@ const PHARMACY = {
       nameHolder: "د/ دعاء أحمد كمال",
       note: "تحويل فوري عبر شبكة المدفوعات اللحظية",
       logo: "instapay_logo.png",
-      appUrl: "https://ipn.eg/S/dkamalph/instapay/2PXtG4"
+      appUrl: "https://ipn.eg/S/dokamalph/instapay/3yQYHI"
     },
     etisalatCash: {
       id: "etisalatCash",
