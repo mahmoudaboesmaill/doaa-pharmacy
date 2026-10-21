@@ -170,7 +170,7 @@ h1 {
   text-decoration: none;
   box-shadow: 0 12px 28px rgba(11, 37, 69, 0.22);
   margin-top:8px;
-  margin-bottom: 10px;
+  margin-bottom:8px;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -341,7 +341,7 @@ h1 {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 18px;
-  margin: 14px 0 20px;
+  margin: 8px 0 8px;
   box-shadow: var(--shadow-sm);
   display: flex;
   align-items: flex-start;
