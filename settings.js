@@ -46,6 +46,15 @@ const PHARMACY = {
       note: "تحويل لمحفظة اتصالات كاش",
       logo: "etisalat_logo.png",
       appUrl: "https://app.etisalat.eg/?appScreens=cash&appScreen=cash&extra=screenId:send_money;dial:01109275859"
+    },
+    vodafoneCash: {
+      id: "vodafoneCash",
+      label: "Vodafone Cash (فودافون كاش)",
+      account: "01090187051",
+      nameHolder: "محفظة فودافون كاش",
+      note: "تحويل لمحفظة فودافون كاش",
+      logo: "vodafone_cash_logo.png",
+      appUrl: "http://vf.eg/vfcash?id=mt&qrId=Y3LVeG"
     }
   }
 };

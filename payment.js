@@ -12,6 +12,11 @@ const paymentMethods = [
     data: PHARMACY.payments.etisalatCash,
     className: "logo-etisalat",
     logoImg: "etisalat_logo.png"
+  },
+  {
+    data: PHARMACY.payments.vodafoneCash,
+    className: "logo-vodafone",
+    logoImg: "vodafone_cash_logo.png"
   }
 ];
 
