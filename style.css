@@ -964,6 +964,213 @@ h1 {
   }
 }
 
+/* صفحة الدفع على الموبايل: إظهار وسائل الدفع الثلاث من أول الشاشة */
+@media (max-width: 520px) {
+  .payment-page .wrap {
+    padding: 10px 10px 28px;
+  }
+
+  .payment-page .hero {
+    display: grid;
+    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-areas:
+      "logo title"
+      "logo subtitle"
+      "logo badge";
+    column-gap: 11px;
+    row-gap: 0;
+    align-items: center;
+    padding: 14px 14px 11px;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    text-align: right;
+  }
+
+  .payment-page .hero::before {
+    height: 4px;
+  }
+
+  .payment-page .hero .logo-wrap {
+    grid-area: logo;
+    width: 68px;
+    height: 68px;
+    margin: 0;
+    padding: 3px;
+  }
+
+  .payment-page .hero h1 {
+    grid-area: title;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .payment-page .hero .subtitle {
+    grid-area: subtitle;
+    margin: 1px 0 0;
+    font-size: 11.5px;
+    line-height: 1.25;
+  }
+
+  .payment-page .hero .badge-status {
+    grid-area: badge;
+    justify-self: start;
+    gap: 5px;
+    margin-top: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .payment-page .hero .pulse-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .payment-page .section-header {
+    gap: 6px;
+    margin: 6px 2px;
+  }
+
+  .payment-page .section-title {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  .payment-page .payment-card {
+    padding: 8px 10px;
+    margin-bottom: 7px;
+    border-radius: 17px;
+  }
+
+  .payment-page .payment-header {
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .payment-page .payment-logo {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    border-radius: 11px;
+    padding: 3px;
+  }
+
+  .payment-page .payment-name {
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .payment-page .payment-note {
+    overflow: hidden;
+    margin-top: 1px;
+    font-size: 10.5px;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .payment-page .account-box {
+    min-height: 42px;
+    margin-bottom: 6px;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+
+  .payment-page .account-holder {
+    font-size: 10.5px;
+    line-height: 1.15;
+  }
+
+  .payment-page .account-number {
+    font-size: 15.5px;
+    line-height: 1.15;
+  }
+
+  .payment-page .payment-actions {
+    gap: 7px;
+  }
+
+  .payment-page .payment-actions .btn {
+    min-height: 36px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    gap: 5px;
+    font-size: 12.5px;
+    line-height: 1.2;
+  }
+
+  .payment-page .payment-actions .btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .payment-page .notice-box {
+    margin-top: 12px;
+  }
+}
+
+/* مساحة رأسية محدودة بسبب شريط المتصفح أو الشاشات القصيرة */
+@media (max-width: 520px) and (max-height: 680px) {
+  .payment-page .wrap {
+    padding-top: 6px;
+  }
+
+  .payment-page .hero {
+    grid-template-columns: 56px minmax(0, 1fr);
+    padding: 10px 12px 8px;
+    margin-bottom: 5px;
+  }
+
+  .payment-page .hero .logo-wrap {
+    width: 56px;
+    height: 56px;
+  }
+
+  .payment-page .hero .badge-status {
+    display: none;
+  }
+
+  .payment-page .section-header {
+    margin-block: 4px;
+  }
+
+  .payment-page .payment-card {
+    padding-block: 7px;
+    margin-bottom: 5px;
+  }
+
+  .payment-page .payment-header {
+    margin-bottom: 4px;
+  }
+
+  .payment-page .payment-logo {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+  }
+
+  .payment-page .payment-note {
+    display: none;
+  }
+
+  .payment-page .account-box {
+    min-height: 38px;
+    margin-bottom: 4px;
+    padding-block: 4px;
+  }
+
+  .payment-page .payment-actions .btn {
+    min-height: 32px;
+    padding-block: 5px;
+  }
+}
+
 /* شاشات أكبر من الموبايل (فوق 520px) */
 @media (min-width: 521px) {
   .wrap {
