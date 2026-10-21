@@ -161,7 +161,7 @@ h1 {
 .rx-banner {
   background: linear-gradient(135deg, #0b2545 0%, #0c3664 60%, #0077b6 100%);
   border-radius: var(--radius-lg);
-  padding: 18px 16px;
+  padding: 16px 16px;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -340,7 +340,7 @@ h1 {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 18px;
+  padding: 10px;
   margin: 8px 0 8px;
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -693,7 +693,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 8px;
 }
 
 .quick-btn {
@@ -732,7 +732,7 @@ h1 {
   color: var(--text-muted);
   font-size: 13px;
   font-weight: 600;
-  margin-top: 26px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
