@@ -1171,6 +1171,159 @@ h1 {
   }
 }
 
+/* صفحة التواصل على الموبايل: إظهار كروت التواصل الستة من أول الشاشة */
+@media (max-width: 520px) {
+  .contact-page .wrap {
+    padding: 10px 10px 28px;
+  }
+
+  .contact-page .hero {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    grid-template-areas:
+      "logo title"
+      "logo subtitle"
+      "logo badge";
+    column-gap: 10px;
+    row-gap: 0;
+    align-items: center;
+    padding: 12px 13px 10px;
+    margin-bottom: 6px;
+    border-radius: 19px;
+    text-align: right;
+  }
+
+  .contact-page .hero::before {
+    height: 4px;
+  }
+
+  .contact-page .hero .logo-wrap {
+    grid-area: logo;
+    width: 64px;
+    height: 64px;
+    margin: 0;
+    padding: 3px;
+  }
+
+  .contact-page .hero h1 {
+    grid-area: title;
+    font-size: 15.5px;
+    line-height: 1.25;
+  }
+
+  .contact-page .hero .subtitle {
+    grid-area: subtitle;
+    margin: 1px 0 0;
+    font-size: 11.5px;
+    line-height: 1.25;
+  }
+
+  .contact-page .hero .badge-status {
+    grid-area: badge;
+    justify-self: start;
+    gap: 5px;
+    margin-top: 4px;
+    padding: 2px 8px;
+    font-size: 9.5px;
+    line-height: 1.25;
+  }
+
+  .contact-page .hero .pulse-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .contact-page .section-header {
+    gap: 6px;
+    margin: 5px 2px 6px;
+  }
+
+  .contact-page .section-title {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .contact-page .grid {
+    gap: 6px;
+    margin-bottom: 9px;
+  }
+
+  .contact-page .tile {
+    min-height: 76px;
+    padding: 7px 5px;
+    border-radius: 14px;
+  }
+
+  .contact-page .tile-icon-wrap {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 4px;
+    border-radius: 10px;
+  }
+
+  .contact-page .tile-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact-page .tile b {
+    font-size: 12.5px;
+    line-height: 1.2;
+  }
+
+  .contact-page .tile span {
+    margin-top: 1px;
+    font-size: 9.5px;
+    line-height: 1.2;
+  }
+}
+
+/* مساحة رأسية محدودة بسبب شريط المتصفح أو الشاشات القصيرة */
+@media (max-width: 520px) and (max-height: 680px) {
+  .contact-page .wrap {
+    padding-top: 6px;
+  }
+
+  .contact-page .hero {
+    grid-template-columns: 54px minmax(0, 1fr);
+    padding: 9px 11px 7px;
+    margin-bottom: 4px;
+  }
+
+  .contact-page .hero .logo-wrap {
+    width: 54px;
+    height: 54px;
+  }
+
+  .contact-page .hero .badge-status {
+    display: none;
+  }
+
+  .contact-page .section-header {
+    margin-block: 3px 5px;
+  }
+
+  .contact-page .tile {
+    min-height: 60px;
+    padding-block: 6px;
+  }
+
+  .contact-page .tile-icon-wrap {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 3px;
+  }
+
+  .contact-page .tile-icon-wrap svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .contact-page .tile span {
+    display: none;
+  }
+}
+
 /* شاشات أكبر من الموبايل (فوق 520px) */
 @media (min-width: 521px) {
   .wrap {
