@@ -169,7 +169,8 @@ h1 {
   gap: 14px;
   text-decoration: none;
   box-shadow: 0 12px 28px rgba(11, 37, 69, 0.22);
-  margin-bottom: 20px;
+  margin-top:8px;
+  margin-bottom: 10px;
   position: relative;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
