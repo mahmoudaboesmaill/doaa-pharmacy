@@ -460,6 +460,15 @@ h1 {
   padding: 4px;
 }
 
+.payment-logo.logo-vodafone {
+  background: #ffffff !important;
+  padding: 3px;
+}
+
+.payment-logo.logo-vodafone img {
+  transform: scale(1.3);
+}
+
 .payment-details {
   flex: 1;
 }
