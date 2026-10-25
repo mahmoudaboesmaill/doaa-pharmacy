@@ -112,38 +112,25 @@ async function openVodafoneOnIOS(event, payment, appLink) {
   }
 }
 
-function configureVodafoneLink(payment, appLink, platformHelp) {
+function configureVodafoneLink(payment, appLink) {
   const platform = getMobilePlatform();
-  const linkLabel = appLink.querySelector("span");
 
   // فتح الرابط في نفس الصفحة يقلل التبويبات الوسيطة على الموبايل.
   appLink.removeAttribute("target");
+  appLink.href = payment.appUrl;
 
   if (platform === "android") {
     // رابط فودافون الرسمي هو الذي ينفذ التحويل الصحيح إلى التطبيق.
     // توجيه Intent باسم الحزمة مباشرةً يفتح Play Store لأن التطبيق لا يعلن
     // أن رابط vf.eg قابل للاستقبال كـ Android App Link.
-    appLink.href = payment.appUrl;
-    linkLabel.textContent = "فتح Ana Vodafone";
-    platformHelp.hidden = false;
-    platformHelp.textContent =
-      "سيتم فتح رابط فودافون الرسمي لحظة قصيرة ثم الانتقال إلى Ana Vodafone.";
     return;
   }
 
   if (platform === "ios") {
-    appLink.href = payment.appUrl;
-    linkLabel.textContent = "نسخ الرقم ثم فتح";
-    platformHelp.hidden = false;
-    platformHelp.textContent =
-      "على iPhone: سيتم نسخ الرقم أولاً؛ الصقه في خانة رقم المستلم داخل Ana Vodafone.";
     appLink.addEventListener("click", (event) =>
       openVodafoneOnIOS(event, payment, appLink)
     );
-    return;
   }
-
-  appLink.href = payment.appUrl;
 }
 
 const container = document.getElementById("paymentCardsList");
@@ -153,13 +140,21 @@ paymentMethods.forEach((method) => {
   const payment = method.data;
   if (!payment) return;
 
+  const analyticsMethodName = {
+    instapay: "instapay",
+    etisalatCash: "etisalat_cash",
+    vodafoneCash: "vodafone_cash"
+  }[payment.id] || "payment";
+
   const fragment = template.content.cloneNode(true);
   const logoBox = fragment.querySelector(".payment-logo");
   const logo = fragment.querySelector(".payment-logo img");
   const actions = fragment.querySelector(".payment-actions");
   const copyButton = fragment.querySelector(".btn-copy");
   const appLink = fragment.querySelector(".btn-app");
-  const platformHelp = fragment.querySelector(".payment-platform-help");
+
+  copyButton.dataset.analyticsEvent = `${analyticsMethodName}_copy_click`;
+  appLink.dataset.analyticsEvent = `${analyticsMethodName}_open_click`;
 
   logoBox.classList.add(method.className);
   logo.src = method.logoImg;
@@ -175,7 +170,7 @@ paymentMethods.forEach((method) => {
 
   if (payment.appUrl) {
     if (payment.id === "vodafoneCash") {
-      configureVodafoneLink(payment, appLink, platformHelp);
+      configureVodafoneLink(payment, appLink);
     } else {
       appLink.href = payment.appUrl;
     }
