@@ -111,14 +111,77 @@ function createAndroidIntentUrl(appUrl) {
   const scheme = parsedUrl.protocol.slice(0, -1);
   const destination =
     parsedUrl.host + parsedUrl.pathname + parsedUrl.search + parsedUrl.hash;
-  const fallbackUrl = encodeURIComponent(parsedUrl.href);
 
   return (
     `intent://${destination}#Intent;scheme=${scheme};` +
     `package=${ANA_VODAFONE_ANDROID_PACKAGE};` +
-    `S.browser_fallback_url=${fallbackUrl};end`
+    "end"
   );
 }
+
+const androidLaunchDialog = document.getElementById("androidLaunchDialog");
+const androidLaunchRetry = document.getElementById("androidLaunchRetry");
+const androidLaunchCopy = document.getElementById("androidLaunchCopy");
+const androidLaunchClose = document.getElementById("androidLaunchClose");
+const androidLaunchBrowser = document.getElementById("androidLaunchBrowser");
+const androidLaunchNumber = document.getElementById("androidLaunchNumber");
+
+let activeAndroidPayment;
+let activeAndroidIntentUrl;
+let activeAndroidTrigger;
+
+function closeAndroidLaunchDialog() {
+  if (androidLaunchDialog.hidden) return;
+
+  androidLaunchDialog.hidden = true;
+  document.body.classList.remove("app-launch-open");
+  activeAndroidTrigger?.focus({ preventScroll: true });
+}
+
+function showAndroidLaunchDialog(payment, appLink) {
+  activeAndroidPayment = payment;
+  activeAndroidIntentUrl = createAndroidIntentUrl(payment.appUrl);
+  activeAndroidTrigger = appLink;
+  androidLaunchNumber.textContent = payment.account;
+  androidLaunchBrowser.href = payment.appUrl;
+  androidLaunchDialog.hidden = false;
+  document.body.classList.add("app-launch-open");
+}
+
+function launchAndroidVodafoneApp() {
+  if (!activeAndroidIntentUrl) return;
+  window.location.assign(activeAndroidIntentUrl);
+}
+
+function openVodafoneOnAndroid(event, payment, appLink) {
+  event.preventDefault();
+  showAndroidLaunchDialog(payment, appLink);
+  launchAndroidVodafoneApp();
+}
+
+async function copyAndroidVodafoneNumber() {
+  if (!activeAndroidPayment) return;
+
+  try {
+    await writeToClipboard(activeAndroidPayment.account);
+    showToast("تم نسخ رقم فودافون كاش ✓");
+  } catch (_error) {
+    showToast("انسخ رقم المحفظة يدوياً");
+    window.prompt("انسخ رقم فودافون كاش:", activeAndroidPayment.account);
+  }
+}
+
+androidLaunchRetry.addEventListener("click", launchAndroidVodafoneApp);
+androidLaunchCopy.addEventListener("click", copyAndroidVodafoneNumber);
+androidLaunchClose.addEventListener("click", closeAndroidLaunchDialog);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeAndroidLaunchDialog();
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) closeAndroidLaunchDialog();
+});
 
 async function openVodafoneOnIOS(event, payment, appLink) {
   event.preventDefault();
@@ -146,6 +209,9 @@ function configureVodafoneLink(payment, appLink, platformHelp) {
   if (platform === "android") {
     appLink.href = createAndroidIntentUrl(payment.appUrl);
     linkLabel.textContent = "فتح Ana Vodafone";
+    appLink.addEventListener("click", (event) =>
+      openVodafoneOnAndroid(event, payment, appLink)
+    );
     return;
   }
 
