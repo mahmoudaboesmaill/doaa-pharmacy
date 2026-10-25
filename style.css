@@ -524,6 +524,14 @@ h1 {
   grid-template-columns: 1fr;
 }
 
+.payment-platform-help {
+  margin: 10px 2px 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
 .btn {
   border: 0;
   border-radius: var(--radius-sm);
@@ -1106,6 +1114,12 @@ h1 {
   .payment-page .payment-actions .btn svg {
     width: 14px;
     height: 14px;
+  }
+
+  .payment-page .payment-platform-help {
+    margin-top: 7px;
+    font-size: 10.5px;
+    line-height: 1.45;
   }
 
   .payment-page .notice-box {

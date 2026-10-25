@@ -21,6 +21,7 @@ const paymentMethods = [
 ];
 
 let toastTimer;
+const ANA_VODAFONE_ANDROID_PACKAGE = "com.emeint.android.myservices";
 
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -86,6 +87,83 @@ async function copyText(text, button) {
   }
 }
 
+function getMobilePlatform() {
+  const userAgent = navigator.userAgent || "";
+  const isIPadOS =
+    navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+
+  if (/Android/i.test(userAgent)) return "android";
+  if (/iPad|iPhone|iPod/i.test(userAgent) || isIPadOS) return "ios";
+  return "other";
+}
+
+function createAndroidIntentUrl(appUrl) {
+  let parsedUrl;
+
+  try {
+    parsedUrl = new URL(appUrl, window.location.href);
+  } catch (_error) {
+    return appUrl;
+  }
+
+  if (!/^https?:$/.test(parsedUrl.protocol)) return appUrl;
+
+  const scheme = parsedUrl.protocol.slice(0, -1);
+  const destination =
+    parsedUrl.host + parsedUrl.pathname + parsedUrl.search + parsedUrl.hash;
+  const fallbackUrl = encodeURIComponent(parsedUrl.href);
+
+  return (
+    `intent://${destination}#Intent;scheme=${scheme};` +
+    `package=${ANA_VODAFONE_ANDROID_PACKAGE};` +
+    `S.browser_fallback_url=${fallbackUrl};end`
+  );
+}
+
+async function openVodafoneOnIOS(event, payment, appLink) {
+  event.preventDefault();
+  appLink.setAttribute("aria-busy", "true");
+
+  try {
+    await writeToClipboard(payment.account);
+    showToast("تم نسخ رقم فودافون كاش؛ الصقه داخل التطبيق ✓");
+  } catch (_error) {
+    showToast("انسخ رقم المحفظة ثم الصقه داخل التطبيق");
+    window.prompt("انسخ رقم فودافون كاش:", payment.account);
+  } finally {
+    appLink.removeAttribute("aria-busy");
+    window.location.assign(payment.appUrl);
+  }
+}
+
+function configureVodafoneLink(payment, appLink, platformHelp) {
+  const platform = getMobilePlatform();
+  const linkLabel = appLink.querySelector("span");
+
+  // فتح الرابط في نفس الصفحة يقلل التبويبات الوسيطة على الموبايل.
+  appLink.removeAttribute("target");
+
+  if (platform === "android") {
+    appLink.href = createAndroidIntentUrl(payment.appUrl);
+    linkLabel.textContent = "فتح Ana Vodafone";
+    return;
+  }
+
+  if (platform === "ios") {
+    appLink.href = payment.appUrl;
+    linkLabel.textContent = "نسخ الرقم ثم فتح";
+    platformHelp.hidden = false;
+    platformHelp.textContent =
+      "على iPhone: سيتم نسخ الرقم أولاً؛ الصقه في خانة رقم المستلم داخل Ana Vodafone.";
+    appLink.addEventListener("click", (event) =>
+      openVodafoneOnIOS(event, payment, appLink)
+    );
+    return;
+  }
+
+  appLink.href = payment.appUrl;
+}
+
 const container = document.getElementById("paymentCardsList");
 const template = document.getElementById("paymentCardTemplate");
 
@@ -99,6 +177,7 @@ paymentMethods.forEach((method) => {
   const actions = fragment.querySelector(".payment-actions");
   const copyButton = fragment.querySelector(".btn-copy");
   const appLink = fragment.querySelector(".btn-app");
+  const platformHelp = fragment.querySelector(".payment-platform-help");
 
   logoBox.classList.add(method.className);
   logo.src = method.logoImg;
@@ -113,7 +192,11 @@ paymentMethods.forEach((method) => {
   copyButton.addEventListener("click", () => copyText(payment.account, copyButton));
 
   if (payment.appUrl) {
-    appLink.href = payment.appUrl;
+    if (payment.id === "vodafoneCash") {
+      configureVodafoneLink(payment, appLink, platformHelp);
+    } else {
+      appLink.href = payment.appUrl;
+    }
   } else {
     appLink.remove();
     actions.classList.add("single");
