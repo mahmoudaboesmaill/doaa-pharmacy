@@ -21,7 +21,6 @@ const paymentMethods = [
 ];
 
 let toastTimer;
-const ANA_VODAFONE_ANDROID_PACKAGE = "com.emeint.android.myservices";
 
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -97,92 +96,6 @@ function getMobilePlatform() {
   return "other";
 }
 
-function createAndroidIntentUrl(appUrl) {
-  let parsedUrl;
-
-  try {
-    parsedUrl = new URL(appUrl, window.location.href);
-  } catch (_error) {
-    return appUrl;
-  }
-
-  if (!/^https?:$/.test(parsedUrl.protocol)) return appUrl;
-
-  const scheme = parsedUrl.protocol.slice(0, -1);
-  const destination =
-    parsedUrl.host + parsedUrl.pathname + parsedUrl.search + parsedUrl.hash;
-
-  return (
-    `intent://${destination}#Intent;scheme=${scheme};` +
-    `package=${ANA_VODAFONE_ANDROID_PACKAGE};` +
-    "end"
-  );
-}
-
-const androidLaunchDialog = document.getElementById("androidLaunchDialog");
-const androidLaunchRetry = document.getElementById("androidLaunchRetry");
-const androidLaunchCopy = document.getElementById("androidLaunchCopy");
-const androidLaunchClose = document.getElementById("androidLaunchClose");
-const androidLaunchBrowser = document.getElementById("androidLaunchBrowser");
-const androidLaunchNumber = document.getElementById("androidLaunchNumber");
-
-let activeAndroidPayment;
-let activeAndroidIntentUrl;
-let activeAndroidTrigger;
-
-function closeAndroidLaunchDialog() {
-  if (androidLaunchDialog.hidden) return;
-
-  androidLaunchDialog.hidden = true;
-  document.body.classList.remove("app-launch-open");
-  activeAndroidTrigger?.focus({ preventScroll: true });
-}
-
-function showAndroidLaunchDialog(payment, appLink) {
-  activeAndroidPayment = payment;
-  activeAndroidIntentUrl = createAndroidIntentUrl(payment.appUrl);
-  activeAndroidTrigger = appLink;
-  androidLaunchNumber.textContent = payment.account;
-  androidLaunchBrowser.href = payment.appUrl;
-  androidLaunchDialog.hidden = false;
-  document.body.classList.add("app-launch-open");
-}
-
-function launchAndroidVodafoneApp() {
-  if (!activeAndroidIntentUrl) return;
-  window.location.assign(activeAndroidIntentUrl);
-}
-
-function openVodafoneOnAndroid(event, payment, appLink) {
-  event.preventDefault();
-  showAndroidLaunchDialog(payment, appLink);
-  launchAndroidVodafoneApp();
-}
-
-async function copyAndroidVodafoneNumber() {
-  if (!activeAndroidPayment) return;
-
-  try {
-    await writeToClipboard(activeAndroidPayment.account);
-    showToast("تم نسخ رقم فودافون كاش ✓");
-  } catch (_error) {
-    showToast("انسخ رقم المحفظة يدوياً");
-    window.prompt("انسخ رقم فودافون كاش:", activeAndroidPayment.account);
-  }
-}
-
-androidLaunchRetry.addEventListener("click", launchAndroidVodafoneApp);
-androidLaunchCopy.addEventListener("click", copyAndroidVodafoneNumber);
-androidLaunchClose.addEventListener("click", closeAndroidLaunchDialog);
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeAndroidLaunchDialog();
-});
-
-document.addEventListener("visibilitychange", () => {
-  if (document.hidden) closeAndroidLaunchDialog();
-});
-
 async function openVodafoneOnIOS(event, payment, appLink) {
   event.preventDefault();
   appLink.setAttribute("aria-busy", "true");
@@ -207,11 +120,14 @@ function configureVodafoneLink(payment, appLink, platformHelp) {
   appLink.removeAttribute("target");
 
   if (platform === "android") {
-    appLink.href = createAndroidIntentUrl(payment.appUrl);
+    // رابط فودافون الرسمي هو الذي ينفذ التحويل الصحيح إلى التطبيق.
+    // توجيه Intent باسم الحزمة مباشرةً يفتح Play Store لأن التطبيق لا يعلن
+    // أن رابط vf.eg قابل للاستقبال كـ Android App Link.
+    appLink.href = payment.appUrl;
     linkLabel.textContent = "فتح Ana Vodafone";
-    appLink.addEventListener("click", (event) =>
-      openVodafoneOnAndroid(event, payment, appLink)
-    );
+    platformHelp.hidden = false;
+    platformHelp.textContent =
+      "سيتم فتح رابط فودافون الرسمي لحظة قصيرة ثم الانتقال إلى Ana Vodafone.";
     return;
   }
 

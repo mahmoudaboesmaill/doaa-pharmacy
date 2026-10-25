@@ -7,7 +7,7 @@
   <title>وسائل الدفع - صيدلية د/ دعاء أحمد كمال</title>
   <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لصيدلية د/ دعاء أحمد كمال - InstaPay و e& money وفودافون كاش.">
   <link rel="icon" type="image/jpeg" href="logo.jpg">
-  <link rel="stylesheet" href="style.css?v=4.4">
+  <link rel="stylesheet" href="style.css?v=4.5">
 </head>
 <body class="payment-page">
 
@@ -77,22 +77,6 @@
   <span id="toastText">تم نسخ الرقم بنجاح</span>
 </div>
 
-<!-- نافذة ثابتة بديلة عن رسالة Continue المؤقتة في Chrome على Android -->
-<div class="app-launch-overlay" id="androidLaunchDialog" hidden>
-  <section class="app-launch-card" role="dialog" aria-modal="true" aria-labelledby="androidLaunchTitle" aria-describedby="androidLaunchText">
-    <button type="button" class="app-launch-close" id="androidLaunchClose" aria-label="إغلاق">×</button>
-    <img src="vodafone_cash_logo.png" alt="" class="app-launch-logo" width="64" height="64">
-    <h2 id="androidLaunchTitle">فتح Ana Vodafone</h2>
-    <p id="androidLaunchText">لو رسالة Continue اختفت، اضغط الزر مرة أخرى ثم اختر Continue من أعلى الشاشة.</p>
-    <p class="app-launch-number" id="androidLaunchNumber"></p>
-    <div class="app-launch-actions">
-      <button type="button" class="btn btn-app" id="androidLaunchRetry">إعادة محاولة فتح التطبيق</button>
-      <button type="button" class="btn btn-copy" id="androidLaunchCopy">نسخ رقم المحفظة</button>
-    </div>
-    <a class="app-launch-browser" id="androidLaunchBrowser" href="#">فتح رابط فودافون في المتصفح بدلًا من ذلك</a>
-  </section>
-</div>
-
 <template id="paymentCardTemplate">
   <div class="payment-card">
     <div class="payment-header">
@@ -135,7 +119,7 @@
 
 <script src="settings.js?v=4.1"></script>
 <script src="site-common.js?v=4.0"></script>
-<script src="payment.js?v=4.3"></script>
+<script src="payment.js?v=4.4"></script>
 
 </body>
 </html>
