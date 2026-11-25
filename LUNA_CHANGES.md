@@ -221,3 +221,17 @@
 
 ### `settings.js`, `payment.js`, `style.css`
 - **ما الذي تغير:** استبدال رابط مشاركة فيسبوك بالرابط المباشر الدائم، وإضافة عنوان `IPA` (`dokamalph@instapay`) لبطاقة إنستاباي، وتفعيل النسخ بالضغط على كامل صندوق الحساب `.account-box` مع زر نسخ مستقل لـ`.ipa-chip`، وإضافة `@font-face` وتنسيقات الهيرو والنسخ في `style.css`.
+
+## 2026-11-25 — تعديلات ما قبل المرحلة الثالثة + مميزات القسم الثالث (البنود 1، 2، 4، 5)
+
+### `contact.js`, `vcard-photo.jpg`, `payment.html`, `payment.js`, `style.css`
+- **ما الذي تغير:** تضمين شعار الصيدلية داخل ملف جهة الاتصال `.vcf` (`PHOTO;ENCODING=b;TYPE=JPEG`) عبر `vcard-photo.jpg` (192×192)، وتحويل شارة `dokamalph@instapay` في بطاقة إنستاباي إلى عرض ثابت `.ipa-badge` بدون زر نسخ.
+
+### `manifest.json`, `sw.js`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png`
+- **ما الذي تغير:** تحويل البوابة إلى تطبيق ويب تقدمي (PWA) مع تخزين مؤقت للعمل بدون إنترنت عبر Service Worker وتسجيله في `site-common.js`.
+
+### `settings.js`, `site-common.js`, `index.js`, `index.html`, `contact.html`, `sitemap.xml`, `robots.txt`
+- **ما الذي تغير:** إضافة أزرار اختيارات واتساب السريعة (`إرسال روشتة`، `توافر دواء`، `طلب دليفري`)، وإضافة بطاقة «قيّمنا على خرائط جوجل» في `contact.html`، وبيانات `Pharmacy` JSON-LD المهيكلة، وملفي `sitemap.xml` و`robots.txt`، وتحديث `CSP` (`connect-src 'self'`, `worker-src 'self'`, `manifest-src 'self'`) وتوحيد الكاش إلى `?v=4.9`.
+
+### `style.css`
+- **ما الذي تغير:** إضافة تنسيقات أزرار واتساب السريعة وبطاقة التقييم وتنسيقات الوضع الليلي التلقائي `@media (prefers-color-scheme: dark)`.

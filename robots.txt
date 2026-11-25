@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mahmoudaboesmaill.github.io/doaa-pharmacy/sitemap.xml

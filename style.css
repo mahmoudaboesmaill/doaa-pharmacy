@@ -565,42 +565,23 @@ h1 {
   font-weight: 600;
 }
 
-.ipa-chip {
+.ipa-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
+  padding: 3px 9px;
   border-radius: 20px;
-  border: 1px solid #d8b4fe;
+  border: 1px solid #e9d5ff;
   background: #faf5ff;
   color: #6b21a8;
   font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   direction: ltr;
-  cursor: pointer;
-  transition: all 0.2s ease;
   max-width: 100%;
 }
 
-.ipa-chip[hidden] {
+.ipa-badge[hidden] {
   display: none;
-}
-
-.ipa-chip:hover {
-  background: #f3e8ff;
-  border-color: #a855f7;
-}
-
-.ipa-chip:focus-visible {
-  outline: 2px solid #9333ea;
-  outline-offset: 2px;
-}
-
-.ipa-chip.copied {
-  background: #ecfdf5;
-  color: #059669;
-  border-color: #a7f3d0;
 }
 
 /* أزرار الإجراءات */
@@ -1186,8 +1167,8 @@ h1 {
     line-height: 1.15;
   }
 
-  .payment-page .ipa-chip {
-    padding: 3px 8px;
+  .payment-page .ipa-badge {
+    padding: 2px 8px;
     font-size: 11px;
   }
 
@@ -1443,6 +1424,264 @@ h1 {
   }
   .portal-card {
     padding: 24px 22px;
+  }
+}
+
+/* =========================================
+   اختيارات واتساب السريعة + تقييم جوجل
+   ========================================= */
+.wa-topics-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.wa-topic-pill {
+  padding: 8px 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--brand-navy);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.wa-topic-pill:hover {
+  border-color: #25d366;
+  background: #f0fdf4;
+  transform: translateY(-1px);
+}
+
+.wa-topic-pill:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 359px) {
+  .wa-topic-pill {
+    font-size: 11px;
+    padding: 7px 4px;
+    gap: 3px;
+  }
+}
+
+.review-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 8px 0 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid #fde68a;
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+  text-decoration: none;
+  color: var(--text-main);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: #f59e0b;
+}
+
+.review-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #fef3c7;
+  color: #d97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-text {
+  flex: 1;
+}
+
+.review-text b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--brand-navy);
+}
+
+.review-text span {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.review-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fef3c7;
+  color: #b45309;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   الوضع الليلي التلقائي (Dark Mode)
+   ========================================= */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page: #081526;
+    --bg-card: #10233a;
+    --text-main: #e6f1f8;
+    --text-muted: #94b2c7;
+    --border-color: #1e3a57;
+    --border-hover: #2d5a82;
+    --brand-cyan-light: rgba(0, 168, 204, 0.16);
+    --accent-green-bg: rgba(16, 185, 129, 0.15);
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.45);
+  }
+
+  body {
+    background: linear-gradient(180deg, #071322 0%, #0b1c30 50%, #081526 100%);
+  }
+
+  h1,
+  .section-title,
+  .tile b,
+  .address-info .label,
+  .payment-name,
+  .account-number,
+  .portal-text h2,
+  .quick-btn,
+  .wa-topic-pill,
+  .review-text b {
+    color: #f1f7fb;
+  }
+
+  .subtitle,
+  .account-holder,
+  .btn-copy,
+  .btn-directions,
+  .hero-home-link:hover {
+    color: #4dd4f0;
+  }
+
+  .badge-status {
+    color: #6ee7b7;
+    border-color: rgba(16, 185, 129, 0.35);
+  }
+
+  .rx-banner {
+    background: linear-gradient(135deg, #0d2e56 0%, #0d457d 60%, #0284c7 100%);
+    border-color: rgba(125, 211, 252, 0.22);
+  }
+
+  .portal-arrow {
+    background: #17304d;
+    color: #94b2c7;
+  }
+
+  .bg-wa { background: rgba(37, 211, 102, 0.15); color: #4ade80; }
+  .bg-phone { background: rgba(0, 168, 204, 0.16); color: #38bdf8; }
+  .bg-fb { background: rgba(59, 130, 246, 0.18); color: #60a5fa; }
+  .bg-ig { background: rgba(236, 72, 153, 0.18); color: #f472b6; }
+  .bg-maps { background: rgba(239, 68, 68, 0.16); color: #f87171; }
+  .bg-vcard { background: rgba(139, 92, 246, 0.18); color: #a78bfa; }
+
+  .address-icon {
+    background: rgba(239, 68, 68, 0.16);
+    color: #f87171;
+  }
+
+  .portal-card.payment-portal .portal-icon {
+    background: rgba(139, 92, 246, 0.18);
+    color: #a78bfa;
+  }
+
+  .payment-logo {
+    border-color: #284766;
+  }
+
+  .account-box {
+    background: #0a1829;
+    border-color: #254363;
+  }
+
+  .account-box:hover {
+    background: #0d2036;
+    border-color: #38bdf8;
+  }
+
+  .account-box.copied {
+    background: rgba(16, 185, 129, 0.16);
+    border-color: #34d399;
+  }
+
+  .ipa-badge {
+    background: rgba(168, 85, 247, 0.16);
+    border-color: rgba(192, 132, 252, 0.35);
+    color: #e9d5ff;
+  }
+
+  .btn-copy.copied {
+    background: rgba(16, 185, 129, 0.16);
+    color: #6ee7b7;
+    border-color: rgba(52, 211, 153, 0.4);
+  }
+
+  .btn-app {
+    background: #0284c7;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-app:hover {
+      background: #0ea5e9;
+    }
+  }
+
+  .notice-box {
+    background: rgba(16, 152, 173, 0.12);
+    border-color: rgba(34, 211, 238, 0.25);
+    color: #cbeef4;
+  }
+
+  .wa-topic-pill:hover {
+    border-color: #25d366;
+    background: rgba(37, 211, 102, 0.12);
+  }
+
+  .review-card {
+    background: linear-gradient(135deg, #1c2432 0%, #10233a 100%);
+    border-color: rgba(251, 191, 36, 0.35);
+  }
+
+  .review-icon {
+    background: rgba(251, 191, 36, 0.16);
+    color: #fbbf24;
+  }
+
+  .review-arrow {
+    background: #17304d;
+    color: #fbbf24;
+  }
+
+  .toast {
+    background: #163354;
+    border-color: rgba(125, 211, 252, 0.25);
   }
 }
 

@@ -1,6 +1,7 @@
 "use strict";
 
 SITE.applyHeader();
+SITE.renderWhatsappTopics();
 
 const encodedMessage = encodeURIComponent(
   PHARMACY.prescriptionMsg || "السلام عليكم، أود طلب علاج أو إرسال روشتة."
