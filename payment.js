@@ -6,17 +6,17 @@ const paymentMethods = [
   {
     data: PHARMACY.payments.instapay,
     className: "logo-instapay",
-    logoImg: "instapay_logo.png"
+    logoImg: "instapay_logo.webp"
   },
   {
     data: PHARMACY.payments.etisalatCash,
     className: "logo-etisalat",
-    logoImg: "etisalat_logo.png"
+    logoImg: "etisalat_logo.webp"
   },
   {
     data: PHARMACY.payments.vodafoneCash,
     className: "logo-vodafone",
-    logoImg: "vodafone_cash_logo.png"
+    logoImg: "vodafone_cash_logo.webp"
   }
 ];
 
@@ -62,23 +62,25 @@ async function writeToClipboard(text) {
   fallbackCopy(text);
 }
 
-async function copyText(text, button) {
+async function copyText(text, button, customSuccessMsg, extraHighlightEl) {
   if (!text || text.includes("اكتب")) {
     showToast("عذراً، لم يتم تحديد الرقم بعد");
     return;
   }
 
-  const label = button.querySelector(".btn-label");
+  const label = button ? button.querySelector(".btn-label") : null;
 
   try {
     await writeToClipboard(text);
-    button.classList.add("copied");
-    label.textContent = "تم النسخ";
-    showToast("تم نسخ البيانات إلى الحافظة ✓");
+    if (button) button.classList.add("copied");
+    if (extraHighlightEl) extraHighlightEl.classList.add("copied");
+    if (label) label.textContent = "تم النسخ";
+    showToast(customSuccessMsg || "تم نسخ البيانات إلى الحافظة ✓");
 
     window.setTimeout(() => {
-      button.classList.remove("copied");
-      label.textContent = "نسخ الرقم";
+      if (button) button.classList.remove("copied");
+      if (extraHighlightEl) extraHighlightEl.classList.remove("copied");
+      if (label) label.textContent = "نسخ الرقم";
     }, 2000);
   } catch (_error) {
     showToast("تعذر النسخ تلقائياً؛ يمكنك نسخه يدوياً");
@@ -149,15 +151,20 @@ paymentMethods.forEach((method) => {
   const fragment = template.content.cloneNode(true);
   const logoBox = fragment.querySelector(".payment-logo");
   const logo = fragment.querySelector(".payment-logo img");
+  const accountBox = fragment.querySelector(".account-box");
+  const ipaChip = fragment.querySelector(".ipa-chip");
+  const ipaText = fragment.querySelector(".ipa-text");
   const actions = fragment.querySelector(".payment-actions");
   const copyButton = fragment.querySelector(".btn-copy");
   const appLink = fragment.querySelector(".btn-app");
 
   copyButton.dataset.analyticsEvent = `${analyticsMethodName}_copy_click`;
+  accountBox.dataset.analyticsEvent = `${analyticsMethodName}_copy_click`;
+  accountBox.setAttribute("aria-label", `نسخ رقم ${payment.label}`);
   appLink.dataset.analyticsEvent = `${analyticsMethodName}_open_click`;
 
   logoBox.classList.add(method.className);
-  logo.src = method.logoImg;
+  logo.src = payment.logo || method.logoImg;
   logo.alt = payment.label;
   fragment.querySelector(".payment-name").textContent = payment.label;
   fragment.querySelector(".payment-note").textContent =
@@ -166,7 +173,33 @@ paymentMethods.forEach((method) => {
     payment.nameHolder || "الحساب الرسمي";
   fragment.querySelector(".account-number").textContent = payment.account;
 
-  copyButton.addEventListener("click", () => copyText(payment.account, copyButton));
+  const triggerAccountCopy = () =>
+    copyText(payment.account, copyButton, "تم نسخ الرقم إلى الحافظة ✓", accountBox);
+
+  copyButton.addEventListener("click", triggerAccountCopy);
+  accountBox.addEventListener("click", triggerAccountCopy);
+  accountBox.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      triggerAccountCopy();
+    }
+  });
+
+  if (payment.ipa) {
+    ipaChip.hidden = false;
+    ipaText.textContent = payment.ipa;
+    ipaChip.title = "نسخ عنوان إنستاباي (IPA)";
+    ipaChip.dataset.analyticsEvent = "instapay_ipa_copy_click";
+    ipaChip.addEventListener("click", (event) => {
+      event.stopPropagation();
+      copyText(payment.ipa, ipaChip, "تم نسخ عنوان إنستاباي (IPA) ✓");
+    });
+    ipaChip.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.stopPropagation();
+      }
+    });
+  }
 
   if (payment.appUrl) {
     if (payment.id === "vodafoneCash") {
