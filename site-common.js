@@ -35,5 +35,45 @@ const SITE = {
     if (name) name.textContent = PHARMACY.name;
     if (tagline) tagline.textContent = PHARMACY.tagline;
     if (status) status.textContent = this.getStatusText();
+    this.registerServiceWorker();
+  },
+
+  renderWhatsappTopics(containerId = "waTopicsBar") {
+    const container = document.getElementById(containerId);
+    if (!container || !Array.isArray(PHARMACY.whatsappTopics)) return;
+
+    const waNumber = this.toWaNumber(PHARMACY.whatsapp);
+    const fragment = document.createDocumentFragment();
+
+    PHARMACY.whatsappTopics.forEach((topic) => {
+      const link = document.createElement("a");
+      link.className = "wa-topic-pill";
+      link.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(topic.message)}`;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      if (topic.analyticsEvent) {
+        link.dataset.analyticsEvent = topic.analyticsEvent;
+      }
+
+      const iconSpan = document.createElement("span");
+      iconSpan.setAttribute("aria-hidden", "true");
+      iconSpan.textContent = topic.icon;
+
+      const labelSpan = document.createElement("span");
+      labelSpan.textContent = topic.label;
+
+      link.append(iconSpan, labelSpan);
+      fragment.appendChild(link);
+    });
+
+    container.replaceChildren(fragment);
+  },
+
+  registerServiceWorker() {
+    if ("serviceWorker" in navigator && window.location.protocol.startsWith("http")) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch(() => {});
+      });
+    }
   }
 };

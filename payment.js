@@ -152,8 +152,7 @@ paymentMethods.forEach((method) => {
   const logoBox = fragment.querySelector(".payment-logo");
   const logo = fragment.querySelector(".payment-logo img");
   const accountBox = fragment.querySelector(".account-box");
-  const ipaChip = fragment.querySelector(".ipa-chip");
-  const ipaText = fragment.querySelector(".ipa-text");
+  const ipaBadge = fragment.querySelector(".ipa-badge");
   const actions = fragment.querySelector(".payment-actions");
   const copyButton = fragment.querySelector(".btn-copy");
   const appLink = fragment.querySelector(".btn-app");
@@ -185,20 +184,9 @@ paymentMethods.forEach((method) => {
     }
   });
 
-  if (payment.ipa) {
-    ipaChip.hidden = false;
-    ipaText.textContent = payment.ipa;
-    ipaChip.title = "نسخ عنوان إنستاباي (IPA)";
-    ipaChip.dataset.analyticsEvent = "instapay_ipa_copy_click";
-    ipaChip.addEventListener("click", (event) => {
-      event.stopPropagation();
-      copyText(payment.ipa, ipaChip, "تم نسخ عنوان إنستاباي (IPA) ✓");
-    });
-    ipaChip.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.stopPropagation();
-      }
-    });
+  if (payment.ipa && ipaBadge) {
+    ipaBadge.hidden = false;
+    ipaBadge.textContent = payment.ipa;
   }
 
   if (payment.appUrl) {

@@ -3,10 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>وسائل الدفع - صيدلية د/ دعاء أحمد كمال</title>
   <meta name="description" content="وسائل الدفع الإلكتروني والتحويل السريع لصيدلية د/ دعاء أحمد كمال - InstaPay و e& money وفودافون كاش.">
-  <meta name="theme-color" content="#0b2545">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0b2545" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#071526" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://mahmoudaboesmaill.github.io/doaa-pharmacy/payment.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_EG">
@@ -21,9 +23,11 @@
   <meta property="og:image:alt" content="شعار صيدلية د/ دعاء أحمد كمال - صحتك تهمنا">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
   <link rel="preload" href="fonts/cairo-arabic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=4.8">
-  <script src="analytics.js?v=4.8"></script>
+  <link rel="stylesheet" href="style.css?v=4.9">
+  <script src="analytics.js?v=4.9"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RL9CV4SLNX"></script>
 </head>
 <body class="payment-page">
@@ -111,13 +115,7 @@
         <div class="account-holder"></div>
         <div class="account-number"></div>
       </div>
-      <button type="button" class="ipa-chip" hidden>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-        <span class="ipa-text"></span>
-      </button>
+      <span class="ipa-badge" dir="ltr" hidden></span>
     </div>
 
     <div class="payment-actions">
@@ -140,9 +138,9 @@
   </div>
 </template>
 
-<script src="settings.js?v=4.8"></script>
-<script src="site-common.js?v=4.8"></script>
-<script src="payment.js?v=4.8"></script>
+<script src="settings.js?v=4.9"></script>
+<script src="site-common.js?v=4.9"></script>
+<script src="payment.js?v=4.9"></script>
 
 </body>
 </html>
