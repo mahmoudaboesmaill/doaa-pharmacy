@@ -24,7 +24,7 @@ const PHARMACY = {
   mapsUrl: "https://maps.app.goo.gl/hLoWiJtnFauWVxUp9",
 
   // منصات التواصل الاجتماعي
-  facebookUrl: "https://www.facebook.com/share/1B67WUr2Kw/",
+  facebookUrl: "https://www.facebook.com/profile.php?id=100064100042655",
   instagramUrl: "https://www.instagram.com/doctordoaa.pharmacy/",
 
   // وسائل الدفع والتحويل الإلكتروني (InstaPay & e& money & Vodafone Cash)
@@ -33,9 +33,10 @@ const PHARMACY = {
       id: "instapay",
       label: "InstaPay",
       account: "01109275859",
+      ipa: "dokamalph@instapay",
       nameHolder: "د/ دعاء أحمد كمال",
       note: "تحويل فوري عبر شبكة المدفوعات اللحظية",
-      logo: "instapay_logo.png",
+      logo: "instapay_logo.webp",
       appUrl: "https://ipn.eg/S/dokamalph/instapay/3yQYHI"
     },
     etisalatCash: {
@@ -44,7 +45,7 @@ const PHARMACY = {
       account: "01109275859",
       nameHolder: "محفظة إي آند كاش",
       note: "تحويل لمحفظة اتصالات كاش",
-      logo: "etisalat_logo.png",
+      logo: "etisalat_logo.webp",
       appUrl: "https://app.etisalat.eg/?appScreens=cash&appScreen=cash&extra=screenId:send_money;dial:01109275859"
     },
     vodafoneCash: {
@@ -53,7 +54,7 @@ const PHARMACY = {
       account: "01090187051",
       nameHolder: "محفظة فودافون كاش",
       note: "تحويل لمحفظة فودافون كاش",
-      logo: "vodafone_cash_logo.png",
+      logo: "vodafone_cash_logo.webp",
       appUrl: "https://vf.eg/vfcash?id=mt&qrId=Y3LVeG"
     }
   }

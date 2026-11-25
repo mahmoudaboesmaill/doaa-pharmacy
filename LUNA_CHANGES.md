@@ -210,3 +210,14 @@
 
 ### المستودع (`.gitignore`, `.gitattributes`)
 - **ما الذي تغير:** مزامنة الفرع المحلي مع `origin/main`، وحذف `duaa_nfc_pages.zip` و`nfctool.svg` من التتبع، وإضافة `.gitignore` و`.gitattributes`.
+
+## 2026-11-25 — تحسينات القسم الثاني (البنود 2، 3، 4، 5)
+
+### `index.html`, `contact.html`, `payment.html`, `og-image.jpg`
+- **ما الذي تغير:** إضافة وسوم `Open Graph` و`twitter:card` و`canonical` و`theme-color`، وإنشاء صورة معاينة رسمية `og-image.jpg` (1200×630)، وإضافة `preload` للخط العربي، وتحويل الشعار واسم الصيدلية في `contact.html` و`payment.html` إلى رابط للعودة للصفحة الرئيسية، وتوحيد إصدار الكاش إلى `?v=4.8`.
+
+### `logo.webp`, `instapay_logo.webp`, `etisalat_logo.webp`, `vodafone_cash_logo.webp`, `fonts/`
+- **ما الذي تغير:** ضغط وتحويل الشعارات المستخدمة في الواجهة إلى `WebP` بأبعاد مناسبة مع تحديد `width` و`height`، وتضمين ملفات خط `Cairo Variable` بصيغة `WOFF2` محليًا لتوافق `CSP` وتحسين سرعة التحميل والخصوصية.
+
+### `settings.js`, `payment.js`, `style.css`
+- **ما الذي تغير:** استبدال رابط مشاركة فيسبوك بالرابط المباشر الدائم، وإضافة عنوان `IPA` (`dokamalph@instapay`) لبطاقة إنستاباي، وتفعيل النسخ بالضغط على كامل صندوق الحساب `.account-box` مع زر نسخ مستقل لـ`.ipa-chip`، وإضافة `@font-face` وتنسيقات الهيرو والنسخ في `style.css`.
