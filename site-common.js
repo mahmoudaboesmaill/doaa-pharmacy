@@ -35,6 +35,12 @@ const SITE = {
     if (name) name.textContent = PHARMACY.name;
     if (tagline) tagline.textContent = PHARMACY.tagline;
     if (status) status.textContent = this.getStatusText();
+
+    const reviewBtn = document.getElementById("reviewBtn");
+    if (reviewBtn) {
+      reviewBtn.href = PHARMACY.mapsReviewUrl || PHARMACY.mapsUrl;
+    }
+
     this.registerServiceWorker();
   },
 

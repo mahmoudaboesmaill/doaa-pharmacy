@@ -39,13 +39,6 @@ const PHARMACY = {
       label: "توافر دواء",
       message: "السلام عليكم، أود الاستفسار عن توافر دواء أو بديله.",
       analyticsEvent: "wa_topic_stock_click"
-    },
-    {
-      id: "delivery",
-      icon: "🛵",
-      label: "طلب دليفري",
-      message: "السلام عليكم، أود طلب توصيل أدوية للمنزل.",
-      analyticsEvent: "wa_topic_delivery_click"
     }
   ],
 

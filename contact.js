@@ -9,11 +9,6 @@ document.getElementById("phoneTile").href = `tel:${SITE.toE164(PHARMACY.phone)}`
 document.getElementById("mapsTile").href = PHARMACY.mapsUrl;
 document.getElementById("directionsBtn").href = PHARMACY.mapsUrl;
 
-const reviewBtn = document.getElementById("reviewBtn");
-if (reviewBtn) {
-  reviewBtn.href = PHARMACY.mapsReviewUrl || PHARMACY.mapsUrl;
-}
-
 const waNumber = SITE.toWaNumber(PHARMACY.whatsapp);
 const encodedMessage = encodeURIComponent(
   PHARMACY.prescriptionMsg || "السلام عليكم، أود طلب علاج أو إرسال روشتة."
