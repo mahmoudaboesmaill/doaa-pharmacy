@@ -1,6 +1,22 @@
 "use strict";
 
 const SITE = {
+  toE164(rawNumber, countryCode = "20") {
+    const cleaned = String(rawNumber || "").trim().replace(/[\s()-]/g, "");
+    if (!cleaned) return "";
+    if (cleaned.startsWith("+")) return `+${cleaned.slice(1).replace(/\D/g, "")}`;
+    const digits = cleaned.replace(/\D/g, "");
+    if (!digits) return "";
+    if (digits.startsWith("00")) return `+${digits.slice(2)}`;
+    if (digits.startsWith("0")) return `+${countryCode}${digits.slice(1)}`;
+    if (digits.startsWith(countryCode)) return `+${digits}`;
+    return `+${countryCode}${digits}`;
+  },
+
+  toWaNumber(rawNumber, countryCode = "20") {
+    return this.toE164(rawNumber, countryCode).replace(/^\+/, "");
+  },
+
   getStatusText() {
     const hours = PHARMACY.hours;
 
