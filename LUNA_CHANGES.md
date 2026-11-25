@@ -240,3 +240,8 @@
 
 ### `settings.js`, `style.css`, `site-common.js`, `contact.js`, `contact.html`, `payment.html`, `index.html`, `sw.js`
 - **ما الذي تغير:** إزالة خيار «طلب دليفري» من `whatsappTopics` مع ضبط `.wa-topics-bar` ليتوزع تلقائياً بعرض متساوٍ للزرين المتبقيين (`إرسال روشتة` و`توافر دواء`)، ونقل بطاقة «قيّمنا على خرائط جوجل» في `contact.html` لتكون بعد بطاقة «وسائل الدفع والتحويل» مباشرة، وإضافتها في `payment.html` بعد صندوق التنبيه، وربط `#reviewBtn` مركزياً في `SITE.applyHeader()`، وتحديث الكاش إلى `v5.0`.
+
+## 2026-11-25 — رابط التقييم المباشر واختيار تطبيق واتساب على أندرويد
+
+### `settings.js`, `site-common.js`, `index.js`, `contact.js`, `index.html`, `contact.html`, `payment.html`, `sw.js`
+- **ما الذي تغير:** تحديث `mapsReviewUrl` إلى رابط التقييم المباشر `https://search.google.com/local/writereview?placeid=ChIJr2Ft58ZEWBQRttub-jlqYZg`، وإضافة `SITE.isAndroid()` و`SITE.buildWhatsappHref()` و`SITE.configureWhatsappLink()` في `site-common.js` لاستخدام `intent://send?...#Intent;scheme=whatsapp;S.browser_fallback_url=...;end` على أندرويد لإظهار شاشة اختيار تطبيق واتساب (العادي أو بيزنس) وتحديث الكاش إلى `v5.1`.

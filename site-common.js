@@ -17,6 +17,40 @@ const SITE = {
     return this.toE164(rawNumber, countryCode).replace(/^\+/, "");
   },
 
+  isAndroid() {
+    return /Android/i.test(navigator.userAgent || "");
+  },
+
+  buildWhatsappHref(message) {
+    const waNumber = this.toWaNumber(PHARMACY.whatsapp);
+    const hasMessage = Boolean(message && String(message).trim());
+    const encodedText = hasMessage ? encodeURIComponent(message) : "";
+    const webUrl = hasMessage
+      ? `https://wa.me/${waNumber}?text=${encodedText}`
+      : `https://wa.me/${waNumber}`;
+
+    if (this.isAndroid()) {
+      const query = hasMessage
+        ? `phone=${waNumber}&text=${encodedText}`
+        : `phone=${waNumber}`;
+      return `intent://send?${query}#Intent;scheme=whatsapp;S.browser_fallback_url=${encodeURIComponent(webUrl)};end`;
+    }
+
+    return webUrl;
+  },
+
+  configureWhatsappLink(anchor, message) {
+    if (!anchor) return;
+    anchor.href = this.buildWhatsappHref(message);
+    if (this.isAndroid()) {
+      anchor.removeAttribute("target");
+      anchor.removeAttribute("rel");
+    } else {
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+    }
+  },
+
   getStatusText() {
     const hours = PHARMACY.hours;
 
@@ -48,15 +82,12 @@ const SITE = {
     const container = document.getElementById(containerId);
     if (!container || !Array.isArray(PHARMACY.whatsappTopics)) return;
 
-    const waNumber = this.toWaNumber(PHARMACY.whatsapp);
     const fragment = document.createDocumentFragment();
 
     PHARMACY.whatsappTopics.forEach((topic) => {
       const link = document.createElement("a");
       link.className = "wa-topic-pill";
-      link.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(topic.message)}`;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
+      this.configureWhatsappLink(link, topic.message);
       if (topic.analyticsEvent) {
         link.dataset.analyticsEvent = topic.analyticsEvent;
       }
