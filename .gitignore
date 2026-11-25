@@ -1,0 +1,14 @@
+# Archives & generated print exports
+*.zip
+*.pdf
+output/
+
+# OS & editor metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local print templates
+door_sticker_print/
+nfc_stand_v2.html
+nfc_stand_social_v2.html

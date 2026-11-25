@@ -11,11 +11,11 @@ const PHARMACY = {
     timezone: "Africa/Cairo",
     openLabel: "مفتوح الآن • في خدمتكم 24 ساعة"
   },
-  
+
   // أرقام التواصل
   phone: "01126802211",
   whatsapp: "201090187051", // كود مصر 20 بدون علامة +
-  
+
   // رسالة واتساب المسبقة لطلب الروشتة أو الدواء
   prescriptionMsg: "السلام عليكم، أود الاستفسار عن توافر دواء / إرسال صورة الروشتة.",
 
@@ -27,7 +27,7 @@ const PHARMACY = {
   facebookUrl: "https://www.facebook.com/share/1B67WUr2Kw/",
   instagramUrl: "https://www.instagram.com/doctordoaa.pharmacy/",
 
-  // وسائل الدفع والتحويل الإلكتروني (InstaPay & e& money)
+  // وسائل الدفع والتحويل الإلكتروني (InstaPay & e& money & Vodafone Cash)
   payments: {
     instapay: {
       id: "instapay",
@@ -54,7 +54,7 @@ const PHARMACY = {
       nameHolder: "محفظة فودافون كاش",
       note: "تحويل لمحفظة فودافون كاش",
       logo: "vodafone_cash_logo.png",
-      appUrl: "http://vf.eg/vfcash?id=mt&qrId=Y3LVeG"
+      appUrl: "https://vf.eg/vfcash?id=mt&qrId=Y3LVeG"
     }
   }
 };

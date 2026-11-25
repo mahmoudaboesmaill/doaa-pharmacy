@@ -9,19 +9,19 @@
   --accent-red: #c02648;
   --accent-green: #10b981;
   --accent-green-bg: #ecfdf5;
-  
+
   --bg-page: #f1f7fa;
   --bg-card: #ffffff;
   --text-main: #0b2545;
   --text-muted: #587387;
-  
+
   --border-color: #dcebee;
   --border-hover: #b4dbe3;
-  
+
   --shadow-sm: 0 4px 14px rgba(11, 37, 69, 0.04);
   --shadow-md: 0 10px 28px rgba(11, 37, 69, 0.08);
   --shadow-lg: 0 16px 36px rgba(11, 37, 69, 0.12);
-  
+
   --radius-xl: 28px;
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -524,14 +524,6 @@ h1 {
   grid-template-columns: 1fr;
 }
 
-.payment-platform-help {
-  margin: 10px 2px 0;
-  color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.6;
-}
-
 .btn {
   border: 0;
   border-radius: var(--radius-sm);
@@ -575,8 +567,14 @@ h1 {
   color: #ffffff;
 }
 
-.btn-app:hover {
-  background: var(--brand-navy-light);
+.btn-app:visited {
+  color: #ffffff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-app:hover {
+    background: var(--brand-navy-light);
+  }
 }
 
 /* بطاقة الإرشادات والتنبيه */
@@ -779,7 +777,7 @@ h1 {
 }
 
 .portal-card-flush {
-  margin-bottom: 10;
+  margin-bottom: 10px;
 }
 
 .portal-card-top {
@@ -1114,12 +1112,6 @@ h1 {
   .payment-page .payment-actions .btn svg {
     width: 14px;
     height: 14px;
-  }
-
-  .payment-page .payment-platform-help {
-    margin-top: 7px;
-    font-size: 10.5px;
-    line-height: 1.45;
   }
 
   .payment-page .notice-box {
