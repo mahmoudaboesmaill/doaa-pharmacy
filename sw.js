@@ -1,18 +1,18 @@
 "use strict";
 
-const CACHE_NAME = "doaa-pharmacy-v4.9";
+const CACHE_NAME = "doaa-pharmacy-v5.1";
 const PRECACHE_URLS = [
   "./",
   "./index.html",
   "./contact.html",
   "./payment.html",
-  "./style.css?v=4.9",
-  "./settings.js?v=4.9",
-  "./site-common.js?v=4.9",
-  "./index.js?v=4.9",
-  "./contact.js?v=4.9",
-  "./payment.js?v=4.9",
-  "./analytics.js?v=4.9",
+  "./style.css?v=5.1",
+  "./settings.js?v=5.1",
+  "./site-common.js?v=5.1",
+  "./index.js?v=5.1",
+  "./contact.js?v=5.1",
+  "./payment.js?v=5.1",
+  "./analytics.js?v=5.1",
   "./manifest.json",
   "./logo.webp",
   "./instapay_logo.webp",

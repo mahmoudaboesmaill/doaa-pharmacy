@@ -22,7 +22,7 @@ const PHARMACY = {
   // العنوان ورابط الموقع
   address: "أبو رواش، طريق المنصورية، أمام مسجد التوبة",
   mapsUrl: "https://maps.app.goo.gl/hLoWiJtnFauWVxUp9",
-  mapsReviewUrl: "https://www.google.com/maps/place/Doaa+Ahmed+Kamal+Pharmacy/@30.0463882,31.0951061,17z/data=!4m8!3m7!1s0x145844c6e76d61af:0x98616a39fa9bdbb6!8m2!3d30.0463882!4d31.0951061!9m1!1b1!16s%2Fg%2F11frp_7_7q",
+  mapsReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJr2Ft58ZEWBQRttub-jlqYZg",
 
   // اختيارات سريعة لرسائل واتساب
   whatsappTopics: [
@@ -39,13 +39,6 @@ const PHARMACY = {
       label: "توافر دواء",
       message: "السلام عليكم، أود الاستفسار عن توافر دواء أو بديله.",
       analyticsEvent: "wa_topic_stock_click"
-    },
-    {
-      id: "delivery",
-      icon: "🛵",
-      label: "طلب دليفري",
-      message: "السلام عليكم، أود طلب توصيل أدوية للمنزل.",
-      analyticsEvent: "wa_topic_delivery_click"
     }
   ],
 
